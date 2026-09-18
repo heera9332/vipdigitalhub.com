@@ -46,7 +46,7 @@
                         <div class="text-xs text-slate-500 font-medium">On-Time Completion</div>
                     </div>
                     <div>
-                        <div class="text-2xl sm:text-3xl font-extrabold text-slate-900">8+ Yrs</div>
+                        <div class="text-2xl sm:text-3xl font-extrabold text-slate-900">4+ Yrs</div>
                         <div class="text-xs text-slate-500 font-medium">Engineering Depth</div>
                     </div>
                     <div>
