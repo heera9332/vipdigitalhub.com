@@ -34,7 +34,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body 
-    class="h-full font-sans antialiased text-slate-900 bg-slate-100 selection:bg-brand-500 selection:text-white preload-transitions"
+    class="h-full overflow-hidden font-sans antialiased text-slate-900 bg-slate-100 selection:bg-brand-500 selection:text-white preload-transitions"
     x-data="{
         sidebarState: document.documentElement.classList.contains('sidebar-collapsed') ? 'collapsed' : 'expanded',
         mobileOpen: false,
@@ -69,12 +69,12 @@
     @keydown.window.ctrl.b.prevent="toggleSidebar()"
     @keydown.window.meta.b.prevent="toggleSidebar()"
 >
-    <div class="min-h-full flex flex-row">
+    <div class="h-screen flex flex-row overflow-hidden">
         <!-- shadcn sidebar-07 Component -->
         <x-admin.sidebar />
 
         <!-- Main Workspace Area -->
-        <div class="flex-1 flex flex-col min-w-0">
+        <div class="flex-1 flex flex-col min-w-0 h-full overflow-y-auto overscroll-contain">
             <!-- shadcn Header with SidebarTrigger & Breadcrumbs -->
             <header class="h-14 bg-white border-b border-slate-200/90 px-4 sm:px-6 flex items-center justify-between shrink-0 sticky top-0 z-20">
                 <!-- Left: SidebarTrigger & Breadcrumb Trail -->

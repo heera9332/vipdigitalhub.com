@@ -6,12 +6,12 @@
 <!-- Desktop Collapsible Sidebar (shadcn sidebar-07) -->
 <aside 
     data-admin-sidebar
-    class="hidden lg:flex flex-col bg-white border-r border-slate-200/90 shrink-0 select-none transition-all duration-200 ease-in-out relative z-30 w-64"
+    class="hidden lg:flex flex-col bg-white border-r border-slate-200/90 shrink-0 select-none transition-all duration-200 ease-in-out h-full sticky top-0 z-30 w-64"
     :class="sidebarState === 'collapsed' ? 'w-16' : 'w-64'"
     aria-label="Main Navigation"
 >
     <!-- 1. Header / Team Switcher -->
-    <div class="h-14 flex items-center px-3 border-b border-slate-200/80">
+    <div class="h-14 flex items-center px-3 border-b border-slate-200/80 shrink-0">
         <div 
             data-sidebar-item
             class="flex items-center w-full p-2 rounded-xl hover:bg-slate-100/80 transition-colors cursor-pointer"
@@ -36,7 +36,7 @@
     </div>
 
     <!-- 2. NavMain: Content & Navigation Groups -->
-    <div class="flex-1 overflow-y-auto px-3 py-4 space-y-6">
+    <div class="flex-1 overflow-y-auto overscroll-contain px-3 py-4 space-y-6">
         <!-- Platform Group -->
         <div class="space-y-1">
             <div 
@@ -288,7 +288,7 @@
     </div>
 
     <!-- 3. NavUser: User Footer & Popover Dropdown -->
-    <div class="p-2 border-t border-slate-200/80 relative" x-data="{ userDropdownOpen: false }">
+    <div class="p-2 border-t border-slate-200/80 relative shrink-0" x-data="{ userDropdownOpen: false }">
         <button 
             data-sidebar-item
             type="button" 
