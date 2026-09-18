@@ -53,7 +53,7 @@
         <!-- Main Workspace Area -->
         <div class="flex-1 flex flex-col min-w-0">
             <!-- shadcn Header with SidebarTrigger & Breadcrumbs -->
-            <header class="h-16 bg-white border-b border-slate-200/90 px-4 sm:px-6 flex items-center justify-between shrink-0 sticky top-0 z-20">
+            <header class="h-14 bg-white border-b border-slate-200/90 px-4 sm:px-6 flex items-center justify-between shrink-0 sticky top-0 z-20">
                 <!-- Left: SidebarTrigger & Breadcrumb Trail -->
                 <div class="flex items-center gap-3">
                     <!-- Mobile Trigger -->

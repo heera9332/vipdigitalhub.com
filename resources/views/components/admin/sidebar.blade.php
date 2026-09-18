@@ -10,7 +10,7 @@
     aria-label="Main Navigation"
 >
     <!-- 1. Header / Team Switcher -->
-    <div class="h-16 flex items-center px-3 border-b border-slate-200/80">
+    <div class="h-14 flex items-center px-3 border-b border-slate-200/80">
         <div 
             class="flex items-center w-full p-2 rounded-xl hover:bg-slate-100/80 transition-colors cursor-pointer"
             :class="sidebarState === 'collapsed' ? 'justify-center px-0' : 'gap-3'"
@@ -73,7 +73,7 @@
                         <svg class="w-4 h-4 shrink-0 {{ request()->routeIs('admin.posts.*') ? 'text-brand-600' : 'text-slate-500' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
                         </svg>
-                        <span x-show="sidebarState !== 'collapsed'" x-cloak class="truncate">Articles (TipTap)</span>
+                        <span x-show="sidebarState !== 'collapsed'" x-cloak class="truncate">Articles</span>
                     </div>
                     <svg 
                         class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200 shrink-0" 
@@ -384,7 +384,7 @@
             <div class="space-y-1">
                 <div class="px-2 text-[10px] font-bold uppercase tracking-wider text-slate-400 font-mono">Navigation</div>
                 <a href="{{ route('admin.dashboard') }}" class="block px-3 py-2 rounded-xl font-semibold {{ request()->routeIs('admin.dashboard') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">Dashboard</a>
-                <a href="{{ route('admin.posts.index') }}" class="block px-3 py-2 rounded-xl font-semibold {{ request()->routeIs('admin.posts.*') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">Articles (TipTap)</a>
+                <a href="{{ route('admin.posts.index') }}" class="block px-3 py-2 rounded-xl font-semibold {{ request()->routeIs('admin.posts.*') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">Articles</a>
                 <a href="{{ route('admin.projects.index') }}" class="block px-3 py-2 rounded-xl font-semibold {{ request()->routeIs('admin.projects.*') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">Case Studies</a>
                 <a href="{{ route('admin.forms.entries.index') }}" class="flex items-center justify-between px-3 py-2 rounded-xl font-semibold {{ request()->routeIs('admin.forms.entries.*') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">
                     <span>Inquiries & Leads</span>
