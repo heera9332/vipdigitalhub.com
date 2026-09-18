@@ -1,10 +1,12 @@
 import './bootstrap';
 import Alpine from 'alpinejs';
+import collapse from '@alpinejs/collapse';
 import { Editor } from '@tiptap/core';
 import StarterKit from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
 import Image from '@tiptap/extension-image';
 
+Alpine.plugin(collapse);
 window.Alpine = Alpine;
 
 // TipTap Rich-Text Editor Component for Admin Post Content Editing
