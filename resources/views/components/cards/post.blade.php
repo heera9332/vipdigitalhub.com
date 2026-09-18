@@ -2,7 +2,7 @@
     'post',
 ])
 
-<article class="group relative rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-7 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-brand-300 hover:-translate-y-1.5 flex flex-col justify-between">
+<article class="group relative rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-7 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-brand-300 hover:-translate-y-1.5 flex flex-col justify-between h-full">
     <div>
         <div class="flex items-center justify-between text-xs text-slate-500 mb-3.5">
             <x-ui.badge variant="brand" size="sm">
@@ -36,10 +36,10 @@
 
         <a 
             href="{{ route('posts.show', $post) }}" 
-            class="text-xs font-semibold text-brand-600 group-hover:text-brand-700 inline-flex items-center gap-1 hover:gap-1.5 transition-all"
+            class="text-xs font-semibold text-brand-600 group-hover:text-brand-700 inline-flex items-center gap-1 group-hover:gap-1.5 transition-all duration-200"
         >
             <span>Read</span>
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
             </svg>
         </a>
