@@ -5,13 +5,15 @@
 
 <!-- Desktop Collapsible Sidebar (shadcn sidebar-07) -->
 <aside 
-    class="hidden lg:flex flex-col bg-white border-r border-slate-200/90 shrink-0 select-none transition-all duration-200 ease-in-out relative z-30"
+    data-admin-sidebar
+    class="hidden lg:flex flex-col bg-white border-r border-slate-200/90 shrink-0 select-none transition-all duration-200 ease-in-out relative z-30 w-64"
     :class="sidebarState === 'collapsed' ? 'w-16' : 'w-64'"
     aria-label="Main Navigation"
 >
     <!-- 1. Header / Team Switcher -->
     <div class="h-14 flex items-center px-3 border-b border-slate-200/80">
         <div 
+            data-sidebar-item
             class="flex items-center w-full p-2 rounded-xl hover:bg-slate-100/80 transition-colors cursor-pointer"
             :class="sidebarState === 'collapsed' ? 'justify-center px-0' : 'gap-3'"
             title="VIP Digital Hub"
@@ -20,12 +22,12 @@
                 V
             </div>
 
-            <div class="flex-1 min-w-0" x-show="sidebarState !== 'collapsed'" x-cloak>
+            <div data-sidebar-collapsible class="flex-1 min-w-0" x-show="sidebarState !== 'collapsed'" x-cloak>
                 <div class="text-xs font-bold text-slate-900 truncate leading-tight">VIP Digital Hub</div>
                 <div class="text-[11px] text-slate-500 font-mono truncate mt-0.5">Agency Suite</div>
             </div>
 
-            <div class="text-slate-400" x-show="sidebarState !== 'collapsed'" x-cloak>
+            <div data-sidebar-collapsible class="text-slate-400" x-show="sidebarState !== 'collapsed'" x-cloak>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"/>
                 </svg>
@@ -38,6 +40,7 @@
         <!-- Platform Group -->
         <div class="space-y-1">
             <div 
+                data-sidebar-collapsible
                 class="px-2 pb-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 font-mono"
                 x-show="sidebarState !== 'collapsed'"
                 x-cloak
@@ -48,6 +51,7 @@
             <!-- Single Item: Dashboard -->
             <div>
                 <a 
+                    data-sidebar-item
                     href="{{ route('admin.dashboard') }}" 
                     class="flex items-center gap-3 px-2.5 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('admin.dashboard') ? 'bg-brand-50 text-brand-600 font-bold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80' }}"
                     :class="sidebarState === 'collapsed' ? 'justify-center px-0' : ''"
@@ -56,13 +60,14 @@
                     <svg class="w-4 h-4 shrink-0 {{ request()->routeIs('admin.dashboard') ? 'text-brand-600' : 'text-slate-500' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                     </svg>
-                    <span x-show="sidebarState !== 'collapsed'" x-cloak class="truncate">Dashboard</span>
+                    <span data-sidebar-collapsible x-show="sidebarState !== 'collapsed'" x-cloak class="truncate">Dashboard</span>
                 </a>
             </div>
 
             <!-- Collapsible: Articles / Blog (TipTap) -->
             <div class="space-y-1">
                 <button 
+                    data-sidebar-item
                     type="button" 
                     @click="toggleMenu('posts')" 
                     class="w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('admin.posts.*') ? 'text-brand-600 bg-brand-50/60' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80' }}"
@@ -73,9 +78,10 @@
                         <svg class="w-4 h-4 shrink-0 {{ request()->routeIs('admin.posts.*') ? 'text-brand-600' : 'text-slate-500' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
                         </svg>
-                        <span x-show="sidebarState !== 'collapsed'" x-cloak class="truncate">Articles</span>
+                        <span data-sidebar-collapsible x-show="sidebarState !== 'collapsed'" x-cloak class="truncate">Articles</span>
                     </div>
                     <svg 
+                        data-sidebar-collapsible
                         class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200 shrink-0" 
                         :class="openMenus.posts ? 'rotate-90' : ''" 
                         x-show="sidebarState !== 'collapsed'" 
@@ -90,6 +96,7 @@
 
                 <!-- Submenu -->
                 <div 
+                    data-sidebar-collapsible
                     x-show="openMenus.posts && sidebarState !== 'collapsed'" 
                     x-cloak 
                     x-collapse 
@@ -113,6 +120,7 @@
             <!-- Collapsible: Case Studies / Projects -->
             <div class="space-y-1">
                 <button 
+                    data-sidebar-item
                     type="button" 
                     @click="toggleMenu('projects')" 
                     class="w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('admin.projects.*') ? 'text-brand-600 bg-brand-50/60' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80' }}"
@@ -123,9 +131,10 @@
                         <svg class="w-4 h-4 shrink-0 {{ request()->routeIs('admin.projects.*') ? 'text-brand-600' : 'text-slate-500' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                         </svg>
-                        <span x-show="sidebarState !== 'collapsed'" x-cloak class="truncate">Case Studies</span>
+                        <span data-sidebar-collapsible x-show="sidebarState !== 'collapsed'" x-cloak class="truncate">Case Studies</span>
                     </div>
                     <svg 
+                        data-sidebar-collapsible
                         class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200 shrink-0" 
                         :class="openMenus.projects ? 'rotate-90' : ''" 
                         x-show="sidebarState !== 'collapsed'" 
@@ -140,6 +149,7 @@
 
                 <!-- Submenu -->
                 <div 
+                    data-sidebar-collapsible
                     x-show="openMenus.projects && sidebarState !== 'collapsed'" 
                     x-cloak 
                     x-collapse 
@@ -163,6 +173,7 @@
             <!-- Collapsible: Inquiries & Leads -->
             <div class="space-y-1">
                 <button 
+                    data-sidebar-item
                     type="button" 
                     @click="toggleMenu('inquiries')" 
                     class="w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('admin.forms.entries.*') ? 'text-brand-600 bg-brand-50/60' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80' }}"
@@ -178,9 +189,9 @@
                                 <span class="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-amber-500 ring-2 ring-white" x-show="sidebarState === 'collapsed'" x-cloak></span>
                             @endif
                         </div>
-                        <span x-show="sidebarState !== 'collapsed'" x-cloak class="truncate">Inquiries & Leads</span>
+                        <span data-sidebar-collapsible x-show="sidebarState !== 'collapsed'" x-cloak class="truncate">Inquiries & Leads</span>
                     </div>
-                    <div class="flex items-center gap-1.5" x-show="sidebarState !== 'collapsed'" x-cloak>
+                    <div data-sidebar-collapsible class="flex items-center gap-1.5" x-show="sidebarState !== 'collapsed'" x-cloak>
                         @if ($newInquiriesCount > 0)
                             <span class="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">
                                 {{ $newInquiriesCount }}
@@ -200,6 +211,7 @@
 
                 <!-- Submenu -->
                 <div 
+                    data-sidebar-collapsible
                     x-show="openMenus.inquiries && sidebarState !== 'collapsed'" 
                     x-cloak 
                     x-collapse 
@@ -233,6 +245,7 @@
         <!-- Configuration & Resources Group -->
         <div class="space-y-1">
             <div 
+                data-sidebar-collapsible
                 class="px-2 pb-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 font-mono"
                 x-show="sidebarState !== 'collapsed'"
                 x-cloak
@@ -242,6 +255,7 @@
 
             <div>
                 <a 
+                    data-sidebar-item
                     href="{{ route('admin.settings.index') }}" 
                     class="flex items-center gap-3 px-2.5 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('admin.settings.*') ? 'bg-brand-50 text-brand-600 font-bold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80' }}"
                     :class="sidebarState === 'collapsed' ? 'justify-center px-0' : ''"
@@ -251,12 +265,13 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                     </svg>
-                    <span x-show="sidebarState !== 'collapsed'" x-cloak class="truncate">Site Settings</span>
+                    <span data-sidebar-collapsible x-show="sidebarState !== 'collapsed'" x-cloak class="truncate">Site Settings</span>
                 </a>
             </div>
 
             <div>
                 <a 
+                    data-sidebar-item
                     href="{{ route('home') }}" 
                     target="_blank" 
                     class="flex items-center gap-3 px-2.5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 transition-all"
@@ -266,7 +281,7 @@
                     <svg class="w-4 h-4 text-brand-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
-                    <span x-show="sidebarState !== 'collapsed'" x-cloak class="truncate">Live Website</span>
+                    <span data-sidebar-collapsible x-show="sidebarState !== 'collapsed'" x-cloak class="truncate">Live Website</span>
                 </a>
             </div>
         </div>
@@ -275,6 +290,7 @@
     <!-- 3. NavUser: User Footer & Popover Dropdown -->
     <div class="p-2 border-t border-slate-200/80 relative" x-data="{ userDropdownOpen: false }">
         <button 
+            data-sidebar-item
             type="button" 
             @click="userDropdownOpen = !userDropdownOpen" 
             class="flex items-center w-full p-2 rounded-xl hover:bg-slate-100/80 transition-colors text-left"
@@ -285,12 +301,12 @@
                 {{ substr($user?->name ?? 'A', 0, 1) }}
             </div>
 
-            <div class="flex-1 min-w-0" x-show="sidebarState !== 'collapsed'" x-cloak>
-                <div class="text-xs font-bold text-slate-900 truncate leading-tight">{{ $user?->name ?? 'VIP Admin' }}</div>
+            <div data-sidebar-collapsible class="flex-1 min-w-0" x-show="sidebarState !== 'collapsed'" x-cloak>
+                <div class="text-xs font-bold text-slate-900 truncate leading-tight">{{ $user?->name ?? 'Admin' }}</div>
                 <div class="text-[11px] text-slate-400 font-mono truncate mt-0.5">{{ $user?->email ?? 'admin@vipdigitalhub.com' }}</div>
             </div>
 
-            <div class="text-slate-400" x-show="sidebarState !== 'collapsed'" x-cloak>
+            <div data-sidebar-collapsible class="text-slate-400" x-show="sidebarState !== 'collapsed'" x-cloak>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"/>
                 </svg>

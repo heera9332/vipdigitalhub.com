@@ -12,6 +12,20 @@
 
     <title>{{ $title }} — VIP Digital Hub Admin</title>
 
+    <!-- Immediate synchronous sidebar state detection to prevent initial layout shift / flicker -->
+    <script>
+        (function () {
+            try {
+                var state = localStorage.getItem('sidebar_state');
+                if (state === 'collapsed') {
+                    document.documentElement.classList.add('sidebar-collapsed');
+                } else {
+                    document.documentElement.classList.add('sidebar-expanded');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700&display=swap" rel="stylesheet" />
@@ -20,9 +34,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body 
-    class="h-full font-sans antialiased text-slate-900 bg-slate-100 selection:bg-brand-500 selection:text-white"
+    class="h-full font-sans antialiased text-slate-900 bg-slate-100 selection:bg-brand-500 selection:text-white preload-transitions"
     x-data="{
-        sidebarState: localStorage.getItem('sidebar_state') || 'expanded',
+        sidebarState: document.documentElement.classList.contains('sidebar-collapsed') ? 'collapsed' : 'expanded',
         mobileOpen: false,
         openMenus: {
             posts: {{ request()->routeIs('admin.posts.*') ? 'true' : 'false' }},
@@ -32,11 +46,20 @@
         toggleSidebar() {
             this.sidebarState = this.sidebarState === 'expanded' ? 'collapsed' : 'expanded';
             localStorage.setItem('sidebar_state', this.sidebarState);
+            if (this.sidebarState === 'collapsed') {
+                document.documentElement.classList.add('sidebar-collapsed');
+                document.documentElement.classList.remove('sidebar-expanded');
+            } else {
+                document.documentElement.classList.remove('sidebar-collapsed');
+                document.documentElement.classList.add('sidebar-expanded');
+            }
         },
         toggleMenu(name) {
             if (this.sidebarState === 'collapsed') {
                 this.sidebarState = 'expanded';
                 localStorage.setItem('sidebar_state', 'expanded');
+                document.documentElement.classList.remove('sidebar-collapsed');
+                document.documentElement.classList.add('sidebar-expanded');
                 this.openMenus[name] = true;
             } else {
                 this.openMenus[name] = !this.openMenus[name];
@@ -87,7 +110,7 @@
                     <!-- Breadcrumbs -->
                     <nav class="flex items-center gap-1.5 text-xs text-slate-500 overflow-hidden">
                         <a href="{{ route('admin.dashboard') }}" class="font-medium text-slate-400 hover:text-slate-800 transition-colors shrink-0">
-                            VIP Admin
+                            Admin
                         </a>
                         <svg class="w-3.5 h-3.5 text-slate-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -160,5 +183,23 @@
             </main>
         </div>
     </div>
+
+    <!-- Enable smooth transitions only AFTER initial paint and hydration -->
+    <script>
+        (function () {
+            function enableTransitions() {
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        document.body.classList.remove('preload-transitions');
+                    });
+                });
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', enableTransitions);
+            } else {
+                enableTransitions();
+            }
+        })();
+    </script>
 </body>
 </html>

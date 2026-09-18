@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
 
         if (! User::where('email', 'admin@vipdigitalhub.com')->exists()) {
             User::factory()->create([
-                'name' => 'VIP Admin',
+                'name' => 'Admin',
                 'email' => 'admin@vipdigitalhub.com',
             ]);
         }

@@ -59,7 +59,7 @@
                 </div>
                 <div class="pt-3">
                     <a href="{{ route('admin.posts.create') }}" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white text-slate-950 font-bold text-xs hover:bg-slate-50 transition-colors shadow-xs">
-                        <span>New Post (TipTap)</span>
+                        <span>New Post</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </a>
                 </div>

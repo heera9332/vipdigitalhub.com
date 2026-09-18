@@ -138,6 +138,30 @@
     display: none !important;
 }
 
+/* Sidebar stability and flicker prevention */
+body.preload-transitions,
+body.preload-transitions * {
+    transition: none !important;
+}
+
+html.sidebar-collapsed aside[data-admin-sidebar] {
+    width: 4rem !important;
+}
+
+html.sidebar-expanded aside[data-admin-sidebar] {
+    width: 16rem !important;
+}
+
+html.sidebar-collapsed aside[data-admin-sidebar] [data-sidebar-collapsible] {
+    display: none !important;
+}
+
+html.sidebar-collapsed aside[data-admin-sidebar] [data-sidebar-item] {
+    justify-content: center !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
 /* TipTap ProseMirror Editor Canvas Styling */
 .tiptap {
     outline: none !important;
