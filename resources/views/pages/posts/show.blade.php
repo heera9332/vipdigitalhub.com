@@ -50,8 +50,8 @@
                 @endif
 
                 <!-- Article Content -->
-                <div class="reveal-on-scroll text-slate-700 leading-relaxed space-y-6 text-base sm:text-lg">
-                    {!! nl2br(e($post->content)) !!}
+                <div class="reveal-on-scroll prose prose-slate prose-lg max-w-none prose-headings:font-extrabold prose-headings:text-slate-950 prose-a:text-brand-600 prose-a:font-semibold hover:prose-a:text-brand-700 prose-img:rounded-2xl prose-img:shadow-md text-slate-700 leading-relaxed">
+                    {!! $post->content !!}
                 </div>
 
                 <!-- Author Bio Box -->

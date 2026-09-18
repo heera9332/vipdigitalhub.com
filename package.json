@@ -17,6 +17,11 @@
         "@laravel/multiplex": "^0.4.1"
     },
     "dependencies": {
+        "@tailwindcss/typography": "^0.5.20",
+        "@tiptap/core": "^3.31.3",
+        "@tiptap/extension-image": "^3.31.3",
+        "@tiptap/extension-link": "^3.31.3",
+        "@tiptap/starter-kit": "^3.31.3",
         "alpinejs": "^3.17.3",
         "axios": "^1.20.0"
     }

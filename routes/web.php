@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\FormEntryController;
+use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -28,3 +32,36 @@ Route::post('/contact', [ContactController::class, 'submit'])
     ->middleware('throttle:10,1');
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+*/
+Route::prefix('admin')->name('admin.')->group(function (): void {
+    // Guest Auth
+    Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.submit')->middleware('throttle:5,1');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    // Authenticated Admin Panel
+    Route::middleware('auth')->group(function (): void {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+        // Posts (TipTap rich text editor)
+        Route::resource('posts', App\Http\Controllers\Admin\PostController::class);
+
+        // Projects (Portfolio)
+        Route::resource('projects', App\Http\Controllers\Admin\ProjectController::class);
+
+        // Form Inquiries / Entries
+        Route::get('/forms/entries', [FormEntryController::class, 'index'])->name('forms.entries.index');
+        Route::get('/forms/entries/{entry}', [FormEntryController::class, 'show'])->name('forms.entries.show');
+        Route::patch('/forms/entries/{entry}/status', [FormEntryController::class, 'updateStatus'])->name('forms.entries.status');
+        Route::delete('/forms/entries/{entry}', [FormEntryController::class, 'destroy'])->name('forms.entries.destroy');
+
+        // Site Settings
+        Route::get('/settings', [SiteSettingController::class, 'index'])->name('settings.index');
+        Route::post('/settings', [SiteSettingController::class, 'update'])->name('settings.update');
+    });
+});
