@@ -17,9 +17,17 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        if (! User::where('email', 'admin@vipdigitalhub.com')->exists()) {
+            User::factory()->create([
+                'name' => 'VIP Admin',
+                'email' => 'admin@vipdigitalhub.com',
+            ]);
+        }
+
+        $this->call([
+            SiteSettingSeeder::class,
+            ProjectSeeder::class,
+            PostSeeder::class,
         ]);
     }
 }

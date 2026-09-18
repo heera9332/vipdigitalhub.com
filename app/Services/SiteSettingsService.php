@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Schema;
 class SiteSettingsService
 {
     protected const CACHE_KEY = 'site_settings_all';
+
     protected const CACHE_TTL = 86400; // 24 hours
 
     /**
@@ -32,7 +33,7 @@ class SiteSettingsService
             'site_website' => 'agency.website',
             'default_meta_title' => 'agency.default_seo.title',
             'default_meta_description' => 'agency.default_seo.description',
-            default => 'agency.' . $key,
+            default => 'agency.'.$key,
         };
 
         if (config()->has($agencyConfigKey)) {

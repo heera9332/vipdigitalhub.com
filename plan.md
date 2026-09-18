@@ -408,7 +408,7 @@ Sections:
 
 Do not use generic filler copy.
 
-Content should position the company as a technology + growth agency.
+Content should position the company as a technology + Digital Marketing Agency.
 
 ---
 
