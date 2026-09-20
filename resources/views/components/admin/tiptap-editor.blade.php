@@ -7,7 +7,6 @@
 
 <div 
     x-data="tiptapEditor({ initialContent: {{ json_encode(old($name, $value)) }} })" 
-    @editor-selection-change.window="$nextTick(() => {})"
     class="space-y-1.5"
 >
     @if ($label)
@@ -22,6 +21,7 @@
             <!-- Text Styling -->
             <button 
                 type="button" 
+                @mousedown.prevent
                 @click="toggleBold()" 
                 :class="{ 'bg-brand-100 text-brand-700 font-bold shadow-xs': isActive('bold'), 'hover:bg-slate-200/70': !isActive('bold') }"
                 class="p-1.5 rounded-lg text-xs transition-colors" 
@@ -32,6 +32,7 @@
 
             <button 
                 type="button" 
+                @mousedown.prevent
                 @click="toggleItalic()" 
                 :class="{ 'bg-brand-100 text-brand-700 font-bold shadow-xs': isActive('italic'), 'hover:bg-slate-200/70': !isActive('italic') }"
                 class="p-1.5 rounded-lg text-xs transition-colors" 
@@ -42,6 +43,7 @@
 
             <button 
                 type="button" 
+                @mousedown.prevent
                 @click="toggleStrike()" 
                 :class="{ 'bg-brand-100 text-brand-700 shadow-xs': isActive('strike'), 'hover:bg-slate-200/70': !isActive('strike') }"
                 class="p-1.5 rounded-lg text-xs transition-colors" 
@@ -52,6 +54,7 @@
 
             <button 
                 type="button" 
+                @mousedown.prevent
                 @click="toggleCode()" 
                 :class="{ 'bg-brand-100 text-brand-700 shadow-xs': isActive('code'), 'hover:bg-slate-200/70': !isActive('code') }"
                 class="p-1.5 rounded-lg text-xs font-mono transition-colors" 
@@ -65,6 +68,18 @@
             <!-- Headings -->
             <button 
                 type="button" 
+                @mousedown.prevent
+                @click="toggleHeading(1)" 
+                :class="{ 'bg-brand-100 text-brand-700 font-bold shadow-xs': isActive('heading', { level: 1 }), 'hover:bg-slate-200/70': !isActive('heading', { level: 1 }) }"
+                class="px-2 py-1 rounded-lg text-xs font-bold transition-colors" 
+                title="Heading 1"
+            >
+                H1
+            </button>
+
+            <button 
+                type="button" 
+                @mousedown.prevent
                 @click="toggleHeading(2)" 
                 :class="{ 'bg-brand-100 text-brand-700 font-bold shadow-xs': isActive('heading', { level: 2 }), 'hover:bg-slate-200/70': !isActive('heading', { level: 2 }) }"
                 class="px-2 py-1 rounded-lg text-xs font-bold transition-colors" 
@@ -75,6 +90,7 @@
 
             <button 
                 type="button" 
+                @mousedown.prevent
                 @click="toggleHeading(3)" 
                 :class="{ 'bg-brand-100 text-brand-700 font-bold shadow-xs': isActive('heading', { level: 3 }), 'hover:bg-slate-200/70': !isActive('heading', { level: 3 }) }"
                 class="px-2 py-1 rounded-lg text-xs font-bold transition-colors" 
@@ -88,6 +104,7 @@
             <!-- Lists -->
             <button 
                 type="button" 
+                @mousedown.prevent
                 @click="toggleBulletList()" 
                 :class="{ 'bg-brand-100 text-brand-700 shadow-xs': isActive('bulletList'), 'hover:bg-slate-200/70': !isActive('bulletList') }"
                 class="p-1.5 rounded-lg text-xs transition-colors" 
@@ -98,6 +115,7 @@
 
             <button 
                 type="button" 
+                @mousedown.prevent
                 @click="toggleOrderedList()" 
                 :class="{ 'bg-brand-100 text-brand-700 shadow-xs': isActive('orderedList'), 'hover:bg-slate-200/70': !isActive('orderedList') }"
                 class="p-1.5 rounded-lg text-xs transition-colors" 
@@ -108,6 +126,7 @@
 
             <button 
                 type="button" 
+                @mousedown.prevent
                 @click="toggleBlockquote()" 
                 :class="{ 'bg-brand-100 text-brand-700 shadow-xs': isActive('blockquote'), 'hover:bg-slate-200/70': !isActive('blockquote') }"
                 class="p-1.5 rounded-lg text-xs transition-colors" 
@@ -118,6 +137,7 @@
 
             <button 
                 type="button" 
+                @mousedown.prevent
                 @click="toggleCodeBlock()" 
                 :class="{ 'bg-brand-100 text-brand-700 shadow-xs': isActive('codeBlock'), 'hover:bg-slate-200/70': !isActive('codeBlock') }"
                 class="p-1.5 rounded-lg text-xs transition-colors" 
@@ -131,6 +151,7 @@
             <!-- Media & Utilities -->
             <button 
                 type="button" 
+                @mousedown.prevent
                 @click="setLink()" 
                 :class="{ 'bg-brand-100 text-brand-700 shadow-xs': isActive('link'), 'hover:bg-slate-200/70': !isActive('link') }"
                 class="p-1.5 rounded-lg text-xs transition-colors" 
@@ -141,6 +162,7 @@
 
             <button 
                 type="button" 
+                @mousedown.prevent
                 @click="addImage()" 
                 class="p-1.5 rounded-lg text-xs hover:bg-slate-200/70 transition-colors" 
                 title="Insert Image by URL"
@@ -150,6 +172,7 @@
 
             <button 
                 type="button" 
+                @mousedown.prevent
                 @click="setHorizontalRule()" 
                 class="p-1.5 rounded-lg text-xs hover:bg-slate-200/70 transition-colors" 
                 title="Horizontal Divider"
@@ -162,6 +185,7 @@
             <!-- History -->
             <button 
                 type="button" 
+                @mousedown.prevent
                 @click="undo()" 
                 class="p-1.5 rounded-lg text-xs hover:bg-slate-200/70 transition-colors" 
                 title="Undo (Ctrl+Z)"
@@ -171,6 +195,7 @@
 
             <button 
                 type="button" 
+                @mousedown.prevent
                 @click="redo()" 
                 class="p-1.5 rounded-lg text-xs hover:bg-slate-200/70 transition-colors" 
                 title="Redo (Ctrl+Y)"

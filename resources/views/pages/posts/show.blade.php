@@ -50,7 +50,7 @@
                 @endif
 
                 <!-- Article Content -->
-                <div class="reveal-on-scroll prose prose-slate prose-lg max-w-none prose-headings:font-extrabold prose-headings:text-slate-950 prose-a:text-brand-600 prose-a:font-semibold hover:prose-a:text-brand-700 prose-img:rounded-md prose-img:shadow-md text-slate-700 leading-relaxed">
+                <div class="reveal-on-scroll article-content prose prose-slate prose-lg max-w-none prose-headings:font-extrabold prose-headings:text-slate-950 prose-a:text-brand-600 prose-a:font-semibold hover:prose-a:text-brand-700 prose-img:rounded-md prose-img:shadow-md text-slate-700 leading-relaxed">
                     {!! $post->content !!}
                 </div>
 
