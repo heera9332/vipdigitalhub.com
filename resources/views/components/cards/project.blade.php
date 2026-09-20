@@ -3,32 +3,81 @@
 ])
 
 <div class="group relative rounded-md border border-slate-200/90 bg-white overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:border-brand-300 hover:-translate-y-1.5 flex flex-col justify-between">
-    <!-- Visual Header / Mockup Banner -->
-    <div class="relative h-52 w-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 p-6 flex flex-col justify-between overflow-hidden">
-        <div class="absolute inset-0 bg-radial-gradient from-brand-500/15 via-transparent to-transparent"></div>
-        <div class="absolute -right-8 -bottom-8 w-40 h-40 bg-brand-500/10 rounded-full blur-2xl group-hover:bg-brand-500/20 transition-all"></div>
-        
-        <!-- Mock window header dots -->
-        <div class="relative z-10 flex items-center justify-between">
-            <div class="flex items-center gap-1.5">
-                <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-            </div>
-            <x-ui.badge variant="brand" size="sm" class="bg-brand-500/20 text-brand-300 border-brand-500/30">
-                {{ $project->category }}
-            </x-ui.badge>
-        </div>
+    @if (!empty($project->featured_image))
+        <!-- Featured Image Banner -->
+        <div class="relative h-52 w-full bg-slate-900 overflow-hidden flex flex-col justify-between p-6">
+            <img 
+                src="{{ $project->featured_image }}" 
+                alt="{{ $project->title }}" 
+                loading="lazy" 
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-slate-900/30"></div>
 
-        <div class="relative z-10">
-            <div class="text-xs font-mono text-brand-400 font-medium tracking-wide">
-                {{ $project->client ?? 'Client Case Study' }}
+            <!-- Top bar -->
+            <div class="relative z-10 flex items-center justify-between">
+                <div class="flex items-center gap-1.5 backdrop-blur-xs bg-slate-900/60 px-2 py-1 rounded-full border border-white/10">
+                    <span class="w-2 h-2 rounded-full bg-rose-500/90"></span>
+                    <span class="w-2 h-2 rounded-full bg-amber-500/90"></span>
+                    <span class="w-2 h-2 rounded-full bg-emerald-500/90"></span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    @if ($project->featured)
+                        <span class="bg-amber-400 text-slate-950 text-[10px] font-extrabold px-2 py-0.5 rounded shadow-xs uppercase tracking-wider">
+                            Featured
+                        </span>
+                    @endif
+                    <x-ui.badge variant="brand" size="sm" class="bg-brand-500/30 text-brand-200 border-brand-400/30 backdrop-blur-xs">
+                        {{ $project->category }}
+                    </x-ui.badge>
+                </div>
             </div>
-            <div class="text-lg font-bold text-white tracking-tight line-clamp-1 group-hover:text-brand-300 transition-colors">
-                {{ $project->title }}
+
+            <!-- Bottom Title & Client -->
+            <div class="relative z-10">
+                <div class="text-xs font-mono text-brand-300 font-medium tracking-wide drop-shadow-xs">
+                    {{ $project->client ?? 'Client Case Study' }}
+                </div>
+                <div class="text-lg font-bold text-white tracking-tight line-clamp-1 group-hover:text-brand-300 transition-colors drop-shadow-sm">
+                    {{ $project->title }}
+                </div>
             </div>
         </div>
-    </div>
+    @else
+        <!-- Visual Header / Mockup Banner (Fallback) -->
+        <div class="relative h-52 w-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 p-6 flex flex-col justify-between overflow-hidden">
+            <div class="absolute inset-0 bg-radial-gradient from-brand-500/15 via-transparent to-transparent"></div>
+            <div class="absolute -right-8 -bottom-8 w-40 h-40 bg-brand-500/10 rounded-full blur-2xl group-hover:bg-brand-500/20 transition-all"></div>
+            
+            <!-- Mock window header dots -->
+            <div class="relative z-10 flex items-center justify-between">
+                <div class="flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    @if ($project->featured)
+                        <span class="bg-amber-400 text-slate-950 text-[10px] font-extrabold px-2 py-0.5 rounded shadow-xs uppercase tracking-wider">
+                            Featured
+                        </span>
+                    @endif
+                    <x-ui.badge variant="brand" size="sm" class="bg-brand-500/20 text-brand-300 border-brand-500/30">
+                        {{ $project->category }}
+                    </x-ui.badge>
+                </div>
+            </div>
+
+            <div class="relative z-10">
+                <div class="text-xs font-mono text-brand-400 font-medium tracking-wide">
+                    {{ $project->client ?? 'Client Case Study' }}
+                </div>
+                <div class="text-lg font-bold text-white tracking-tight line-clamp-1 group-hover:text-brand-300 transition-colors">
+                    {{ $project->title }}
+                </div>
+            </div>
+        </div>
+    @endif
 
     <!-- Body content -->
     <div class="p-6 flex flex-col flex-grow justify-between">

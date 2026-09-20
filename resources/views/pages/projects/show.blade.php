@@ -68,22 +68,43 @@
             <div class="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
                 <!-- Main Content -->
                 <div class="lg:col-span-2 space-y-8">
-                    <!-- Stylized Terminal / App Preview Mockup -->
-                    <div class="reveal-on-scroll rounded-md border border-slate-800 bg-slate-950 p-6 shadow-xl text-white space-y-4">
-                        <div class="flex items-center justify-between pb-4 border-b border-slate-800">
-                            <div class="flex items-center gap-2">
-                                <span class="w-3 h-3 rounded-full bg-rose-500"></span>
-                                <span class="w-3 h-3 rounded-full bg-amber-500"></span>
-                                <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                    @if (!empty($project->featured_image))
+                        <!-- Featured Image Mockup Preview -->
+                        <div class="reveal-on-scroll rounded-md border border-slate-800 bg-slate-950 overflow-hidden shadow-xl text-white">
+                            <div class="flex items-center justify-between px-5 py-3.5 border-b border-slate-800 bg-slate-900/80">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                                    <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                                    <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-400">Production Release {{ $project->year }}</span>
                             </div>
-                            <span class="text-xs font-mono text-slate-400">Production Release {{ $project->year }}</span>
+                            <div class="relative w-full max-h-[460px] bg-slate-950 overflow-hidden flex items-center justify-center">
+                                <img 
+                                    src="{{ $project->featured_image }}" 
+                                    alt="{{ $project->title }}" 
+                                    class="w-full h-auto object-cover max-h-[460px]"
+                                >
+                            </div>
                         </div>
-                        <div class="py-6 text-center space-y-2">
-                            <div class="text-xs font-mono text-brand-400 uppercase tracking-widest">Architecture Solution</div>
-                            <div class="text-xl font-bold text-white">{{ $project->title }}</div>
-                            <p class="text-xs text-slate-400 max-w-md mx-auto">Engineered by VIP Digital Hub for zero-downtime scalability and high performance.</p>
+                    @else
+                        <!-- Stylized Terminal / App Preview Mockup -->
+                        <div class="reveal-on-scroll rounded-md border border-slate-800 bg-slate-950 p-6 shadow-xl text-white space-y-4">
+                            <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                                    <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                                    <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-400">Production Release {{ $project->year }}</span>
+                            </div>
+                            <div class="py-6 text-center space-y-2">
+                                <div class="text-xs font-mono text-brand-400 uppercase tracking-widest">Architecture Solution</div>
+                                <div class="text-xl font-bold text-white">{{ $project->title }}</div>
+                                <p class="text-xs text-slate-400 max-w-md mx-auto">Engineered by VIP Digital Hub for zero-downtime scalability and high performance.</p>
+                            </div>
                         </div>
-                    </div>
+                    @endif
 
                     <div class="reveal-on-scroll space-y-4" data-reveal-delay="100">
                         <h2 class="text-2xl font-bold text-slate-950">Overview & Challenges</h2>

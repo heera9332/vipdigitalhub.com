@@ -152,4 +152,30 @@ class PagesTest extends TestCase
         $response->assertOk()
             ->assertHeader('Content-Type', 'application/xml');
     }
+
+    public function test_projects_page_displays_featured_image_when_present(): void
+    {
+        $projectWithImage = Project::factory()->create([
+            'status' => 'published',
+            'published_at' => now()->subDay(),
+            'category' => 'Showcase Category',
+            'title' => 'Project With Custom Screenshot',
+            'featured_image' => 'https://example.com/screenshot.png',
+        ]);
+
+        $projectWithoutImage = Project::factory()->create([
+            'status' => 'published',
+            'published_at' => now()->subDay(),
+            'category' => 'Showcase Category',
+            'title' => 'Project With Default Mockup',
+            'featured_image' => null,
+        ]);
+
+        $response = $this->get(route('projects', ['category' => 'Showcase Category']));
+
+        $response->assertOk()
+            ->assertSee('https://example.com/screenshot.png')
+            ->assertSee('Project With Custom Screenshot')
+            ->assertSee('Project With Default Mockup');
+    }
 }
