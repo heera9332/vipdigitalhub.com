@@ -185,6 +185,9 @@
         </div>
     </div>
 
+    <!-- Universal Media Picker Modal -->
+    <x-admin.media-modal />
+
     <!-- Enable smooth transitions only AFTER initial paint and hydration -->
     <script>
         (function () {
@@ -202,5 +205,7 @@
             }
         })();
     </script>
+
+    @stack('scripts')
 </body>
 </html>

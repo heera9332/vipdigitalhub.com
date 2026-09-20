@@ -191,19 +191,12 @@
                         >
                     </div>
 
-                    <div>
-                        <label for="featured_image" class="block text-xs font-semibold text-slate-800 mb-1.5">
-                            Featured Image URL <span class="text-slate-400 font-normal">(Optional)</span>
-                        </label>
-                        <input 
-                            type="text" 
-                            name="featured_image" 
-                            id="featured_image" 
-                            value="{{ old('featured_image') }}" 
-                            placeholder="/images/posts/banner.jpg" 
-                            class="w-full px-3.5 py-2.5 rounded-md border border-slate-300 bg-white text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500"
-                        >
-                    </div>
+                    <x-admin.media-select 
+                        name="featured_image" 
+                        :value="old('featured_image')" 
+                        label="Featured Image" 
+                        help="Upload or select an image to feature at the top of this post."
+                    />
                 </div>
 
                 <!-- SEO Metadata Card -->

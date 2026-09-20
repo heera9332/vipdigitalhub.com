@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FormEntryController;
+use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\ContactController;
@@ -56,6 +57,9 @@ Route::prefix('admin')->name('admin.')->group(function (): void {
 
         // Services (Catalog)
         Route::resource('services', App\Http\Controllers\Admin\ServiceController::class);
+
+        // Media Library & Uploads
+        Route::resource('media', MediaController::class)->except(['create', 'edit', 'show']);
 
         // Form Inquiries / Entries
         Route::get('/forms/entries', [FormEntryController::class, 'index'])->name('forms.entries.index');

@@ -233,6 +233,13 @@
                             class="w-full px-3.5 py-2.5 rounded-md border border-slate-300 bg-white text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500"
                         >
                     </div>
+
+                    <x-admin.media-select 
+                        name="featured_image" 
+                        :value="old('featured_image')" 
+                        label="Project Cover Image" 
+                        help="Upload or select a cover thumbnail image for this project."
+                    />
                 </div>
             </div>
         </div>

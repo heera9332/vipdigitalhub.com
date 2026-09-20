@@ -120,13 +120,391 @@ Alpine.data('tiptapEditor', (config = {}) => {
         },
         addImage() {
             if (!editorInstance) return;
-            const url = window.prompt('Enter Image URL (e.g. /images/featured.jpg or https://...):');
-            if (url) {
-                editorInstance.chain().focus().setImage({ src: url }).run();
-            }
+            window.dispatchEvent(new CustomEvent('open-media-modal', {
+                detail: {
+                    onSelect: (media) => {
+                        if (media && media.url) {
+                            editorInstance.chain().focus().setImage({
+                                src: media.url,
+                                alt: media.alt_text || media.name || '',
+                            }).run();
+                        }
+                    }
+                }
+            }));
         },
     };
 });
+
+// Admin Media Library Component
+Alpine.data('adminMediaLibrary', () => ({
+    isDragging: false,
+    uploading: false,
+    progress: 0,
+    detailModalOpen: false,
+    activeItem: null,
+    saving: false,
+    copied: false,
+
+    handleDrop(e) {
+        this.isDragging = false;
+        const files = e.dataTransfer?.files;
+        if (files && files.length > 0) {
+            this.uploadFile(files[0]);
+        }
+    },
+
+    handleFileSelect(e) {
+        const files = e.target?.files;
+        if (files && files.length > 0) {
+            this.uploadFile(files[0]);
+        }
+    },
+
+    async uploadFile(file) {
+        if (!file) return;
+        this.uploading = true;
+        this.progress = 20;
+
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('name', file.name.replace(/\.[^/.]+$/, ''));
+
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+
+        try {
+            this.progress = 50;
+            const response = await fetch('/admin/media', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken,
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+                body: formData,
+            });
+
+            this.progress = 90;
+            if (!response.ok) {
+                const err = await response.json();
+                alert(err.message || 'Upload failed.');
+                return;
+            }
+
+            this.progress = 100;
+            window.location.reload();
+        } catch (error) {
+            console.error('Upload error:', error);
+            alert('An unexpected error occurred during upload.');
+        } finally {
+            this.uploading = false;
+            this.progress = 0;
+        }
+    },
+
+    openDetails(item) {
+        this.activeItem = { ...item };
+        this.detailModalOpen = true;
+        this.copied = false;
+    },
+
+    async saveChanges() {
+        if (!this.activeItem) return;
+        this.saving = true;
+
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+
+        try {
+            const response = await fetch(`/admin/media/${this.activeItem.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken,
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+                body: JSON.stringify({
+                    name: this.activeItem.name,
+                    alt_text: this.activeItem.alt_text,
+                }),
+            });
+
+            if (response.ok) {
+                this.detailModalOpen = false;
+                window.location.reload();
+            } else {
+                const err = await response.json();
+                alert(err.message || 'Failed to update media details.');
+            }
+        } catch (e) {
+            console.error(e);
+            alert('Error updating media.');
+        } finally {
+            this.saving = false;
+        }
+    },
+
+    async deleteMedia(id) {
+        if (!confirm('Are you sure you want to permanently delete this media file?')) return;
+
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+
+        try {
+            const response = await fetch(`/admin/media/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken,
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+            });
+
+            if (response.ok) {
+                this.detailModalOpen = false;
+                window.location.reload();
+            } else {
+                alert('Failed to delete media file.');
+            }
+        } catch (e) {
+            console.error(e);
+            alert('Error deleting media.');
+        }
+    },
+
+    copyUrl(url) {
+        if (!url) return;
+
+        const handleSuccess = () => {
+            this.copied = true;
+            setTimeout(() => { this.copied = false; }, 2000);
+        };
+
+        if (navigator && navigator.clipboard && typeof navigator.clipboard.writeText === 'function' && window.isSecureContext) {
+            navigator.clipboard.writeText(url)
+                .then(handleSuccess)
+                .catch(() => this.fallbackCopy(url, handleSuccess));
+        } else {
+            this.fallbackCopy(url, handleSuccess);
+        }
+    },
+
+    fallbackCopy(text, onSuccess) {
+        try {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            const successful = document.execCommand('copy');
+            document.body.removeChild(textArea);
+            if (successful && typeof onSuccess === 'function') {
+                onSuccess();
+            }
+        } catch (err) {
+            console.error('Fallback clipboard copy failed:', err);
+        }
+    },
+}));
+
+// Universal Media Picker Modal Component
+Alpine.data('mediaPickerModal', () => ({
+    isOpen: false,
+    activeTab: 'browse',
+    searchQuery: '',
+    filterType: '',
+    loading: false,
+    items: [],
+    pagination: {
+        current_page: 1,
+        last_page: 1,
+        total: 0,
+        prev_page_url: null,
+        next_page_url: null,
+    },
+    selectedItem: null,
+    onSelectCallback: null,
+    uploading: false,
+    uploadError: '',
+    isDragging: false,
+    searchTimeout: null,
+
+    init() {
+        window.addEventListener('open-media-modal', (e) => {
+            this.openModal(e.detail || {});
+        });
+    },
+
+    openModal(detail = {}) {
+        this.isOpen = true;
+        this.onSelectCallback = detail.onSelect || null;
+        this.selectedItem = null;
+        this.activeTab = 'browse';
+        this.uploadError = '';
+        document.body.classList.add('overflow-hidden');
+        this.fetchMedia(1, detail.currentUrl || null);
+    },
+
+    closeModal() {
+        this.isOpen = false;
+        this.selectedItem = null;
+        this.onSelectCallback = null;
+        this.uploadError = '';
+        document.body.classList.remove('overflow-hidden');
+    },
+
+    selectItem(item) {
+        this.selectedItem = item;
+    },
+
+    confirmSelection() {
+        if (this.selectedItem && typeof this.onSelectCallback === 'function') {
+            this.onSelectCallback(this.selectedItem);
+        }
+        this.closeModal();
+    },
+
+    handleSearchInput() {
+        clearTimeout(this.searchTimeout);
+        this.searchTimeout = setTimeout(() => {
+            this.fetchMedia(1);
+        }, 300);
+    },
+
+    setFilter(type) {
+        if (this.filterType === type) {
+            this.filterType = '';
+        } else {
+            this.filterType = type;
+        }
+        this.fetchMedia(1);
+    },
+
+    async fetchMedia(page = 1, preselectUrl = null) {
+        this.loading = true;
+        try {
+            const params = new URLSearchParams({
+                format: 'json',
+                page: page,
+                per_page: 18,
+            });
+            if (this.searchQuery) {
+                params.append('search', this.searchQuery);
+            }
+            if (this.filterType) {
+                params.append('type', this.filterType);
+            }
+
+            const response = await fetch(`/admin/media?${params.toString()}`, {
+                headers: {
+                    'Accept': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                this.items = data.data || [];
+                this.pagination = {
+                    current_page: data.current_page || 1,
+                    last_page: data.last_page || 1,
+                    total: data.total || 0,
+                    prev_page_url: data.prev_page_url,
+                    next_page_url: data.next_page_url,
+                };
+
+                if (preselectUrl && this.items.length > 0) {
+                    const matched = this.items.find(item => item.url === preselectUrl);
+                    if (matched) {
+                        this.selectedItem = matched;
+                    }
+                }
+            }
+        } catch (err) {
+            console.error('Failed to load media:', err);
+        } finally {
+            this.loading = false;
+        }
+    },
+
+    handleDrop(e) {
+        this.isDragging = false;
+        const files = e.dataTransfer?.files;
+        if (files && files.length > 0) {
+            this.uploadFile(files[0]);
+        }
+    },
+
+    handleFileInput(e) {
+        const files = e.target?.files;
+        if (files && files.length > 0) {
+            this.uploadFile(files[0]);
+            e.target.value = '';
+        }
+    },
+
+    async uploadFile(file) {
+        if (!file) return;
+        this.uploading = true;
+        this.uploadError = '';
+
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('name', file.name.replace(/\.[^/.]+$/, ''));
+
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+
+        try {
+            const response = await fetch('/admin/media', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken,
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.media) {
+                this.activeTab = 'browse';
+                this.items.unshift(result.media);
+                this.selectedItem = result.media;
+                this.pagination.total++;
+            } else {
+                this.uploadError = result.message || (result.errors ? Object.values(result.errors).flat().join(', ') : 'Upload failed.');
+            }
+        } catch (err) {
+            this.uploadError = 'Network error while uploading. Please try again.';
+            console.error('Upload error:', err);
+        } finally {
+            this.uploading = false;
+        }
+    }
+}));
+
+// Reusable Media Select Field Component
+Alpine.data('mediaSelect', (initialValue = '') => ({
+    imageUrl: initialValue,
+    showUrlInput: false,
+    openPicker() {
+        window.dispatchEvent(new CustomEvent('open-media-modal', {
+            detail: {
+                currentUrl: this.imageUrl,
+                onSelect: (media) => {
+                    this.imageUrl = media.url;
+                }
+            }
+        }));
+    },
+    clearImage() {
+        this.imageUrl = '';
+    }
+}));
 
 // Initialize Alpine
 Alpine.start();

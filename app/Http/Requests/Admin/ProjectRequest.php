@@ -31,6 +31,7 @@ class ProjectRequest extends FormRequest
             'description' => ['nullable', 'string'],
             'technologies' => ['nullable', 'string'],
             'project_url' => ['nullable', 'url', 'max:255'],
+            'featured_image' => ['nullable', 'string', 'max:500'],
             'featured' => ['nullable', 'boolean'],
             'status' => ['required', Rule::in(['draft', 'published', 'archived'])],
             'sort_order' => ['nullable', 'integer', 'min:0'],
