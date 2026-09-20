@@ -41,6 +41,7 @@
         openMenus: {
             posts: {{ request()->routeIs('admin.posts.*') ? 'true' : 'false' }},
             projects: {{ request()->routeIs('admin.projects.*') ? 'true' : 'false' }},
+            services: {{ request()->routeIs('admin.services.*') ? 'true' : 'false' }},
             inquiries: {{ request()->routeIs('admin.forms.entries.*') ? 'true' : 'false' }},
         },
         toggleSidebar() {

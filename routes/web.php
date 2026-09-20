@@ -54,6 +54,9 @@ Route::prefix('admin')->name('admin.')->group(function (): void {
         // Projects (Portfolio)
         Route::resource('projects', App\Http\Controllers\Admin\ProjectController::class);
 
+        // Services (Catalog)
+        Route::resource('services', App\Http\Controllers\Admin\ServiceController::class);
+
         // Form Inquiries / Entries
         Route::get('/forms/entries', [FormEntryController::class, 'index'])->name('forms.entries.index');
         Route::get('/forms/entries/{entry}', [FormEntryController::class, 'show'])->name('forms.entries.show');

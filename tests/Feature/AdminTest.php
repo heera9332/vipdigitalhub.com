@@ -7,6 +7,7 @@ namespace Tests\Feature;
 use App\Models\FormEntry;
 use App\Models\Post;
 use App\Models\Project;
+use App\Models\Service;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -152,6 +153,11 @@ class AdminTest extends TestCase
 
     public function test_admin_can_manage_case_study_projects(): void
     {
+        // 1. Index & Create screens
+        $this->actingAs($this->adminUser)->get(route('admin.projects.index'))->assertOk()->assertSee('Portfolio & Case Studies', false);
+        $this->actingAs($this->adminUser)->get(route('admin.projects.create'))->assertOk()->assertSee('New Case Study');
+
+        // 2. Store
         $createResponse = $this->actingAs($this->adminUser)->post(route('admin.projects.store'), [
             'title' => 'Global Logistics Automation Platform',
             'slug' => 'global-logistics-automation-platform',
@@ -179,7 +185,33 @@ class AdminTest extends TestCase
         $this->assertIsArray($project->technologies);
         $this->assertContains('Laravel', $project->technologies);
 
-        // Delete project
+        // Verify project is visible on public projects list & detail page
+        $this->get(route('projects'))->assertOk()->assertSee('Global Logistics Automation Platform');
+        $this->get(route('projects.show', $project))->assertOk()->assertSee('FreightCorp');
+
+        // 3. Edit & Update
+        $this->actingAs($this->adminUser)->get(route('admin.projects.edit', $project))->assertOk();
+        $updateResponse = $this->actingAs($this->adminUser)->put(route('admin.projects.update', $project), [
+            'title' => 'Updated Global Logistics Automation',
+            'slug' => 'global-logistics-automation-platform',
+            'category' => 'Custom Software',
+            'client' => 'FreightCorp International',
+            'year' => '2026',
+            'short_description' => 'Updated short description.',
+            'description' => 'Updated description body.',
+            'technologies' => 'Laravel, Redis, AWS',
+            'status' => 'published',
+            'featured' => 0,
+            'sort_order' => 2,
+        ]);
+        $updateResponse->assertRedirect(route('admin.projects.index'));
+        $this->assertDatabaseHas('posts', [
+            'id' => $project->id,
+            'title' => 'Updated Global Logistics Automation',
+            'client' => 'FreightCorp International',
+        ]);
+
+        // 4. Delete project
         $deleteResponse = $this->actingAs($this->adminUser)->delete(route('admin.projects.destroy', $project));
         $deleteResponse->assertRedirect(route('admin.projects.index'));
         $this->assertDatabaseMissing('posts', ['id' => $project->id]);
@@ -234,5 +266,83 @@ class AdminTest extends TestCase
         ]);
 
         $this->assertSame('VIP Digital Hub Enterprise', setting('site_name'));
+    }
+
+    public function test_admin_can_manage_services(): void
+    {
+        // 1. Index
+        $indexResponse = $this->actingAs($this->adminUser)->get(route('admin.services.index'));
+        $indexResponse->assertOk()
+            ->assertSee('Services & Offerings', false)
+            ->assertSee('Add Service');
+
+        // 2. Create form
+        $createFormResponse = $this->actingAs($this->adminUser)->get(route('admin.services.create'));
+        $createFormResponse->assertOk()
+            ->assertSee('New Service');
+
+        // 3. Store new service
+        $storeResponse = $this->actingAs($this->adminUser)->post(route('admin.services.store'), [
+            'title' => 'DevOps & Cloud Automation',
+            'slug' => 'devops-cloud-automation',
+            'short_description' => 'Automated CI/CD pipelines and multi-cloud orchestration on AWS and GCP.',
+            'description' => 'Full architectural specification for enterprise Kubernetes, Terraform infrastructure, and automated rollback workflows.',
+            'category' => 'Cloud & Infrastructure',
+            'icon' => 'cloud',
+            'features' => 'Docker Orchestration, Terraform IaC, Zero-Downtime Deployments',
+            'cta' => 'Scale Cloud Infrastructure',
+            'status' => 'published',
+            'sort_order' => 3,
+        ]);
+
+        $storeResponse->assertRedirect(route('admin.services.index'));
+        $this->assertDatabaseHas('posts', [
+            'post_type' => 'service',
+            'slug' => 'devops-cloud-automation',
+            'title' => 'DevOps & Cloud Automation',
+            'icon' => 'cloud',
+            'status' => 'published',
+        ]);
+
+        $service = Service::where('slug', 'devops-cloud-automation')->first();
+        $this->assertNotNull($service);
+        $this->assertIsArray($service->features);
+        $this->assertContains('Docker Orchestration', $service->features);
+
+        // Verify service shows on frontend services page
+        $frontendResponse = $this->get(route('services'));
+        $frontendResponse->assertOk()
+            ->assertSee('DevOps & Cloud Automation')
+            ->assertSee('Automated CI/CD pipelines');
+
+        // 4. Edit form
+        $editResponse = $this->actingAs($this->adminUser)->get(route('admin.services.edit', $service));
+        $editResponse->assertOk()
+            ->assertSee('Edit: DevOps & Cloud Automation');
+
+        // 5. Update
+        $updateResponse = $this->actingAs($this->adminUser)->put(route('admin.services.update', $service), [
+            'title' => 'Updated Cloud & DevOps Engineering',
+            'slug' => 'devops-cloud-automation',
+            'short_description' => 'Updated short description for cloud automation.',
+            'description' => 'Updated content body.',
+            'icon' => 'cpu',
+            'features' => 'Terraform, Ansible, Kubernetes',
+            'cta' => 'Deploy Now',
+            'status' => 'published',
+            'sort_order' => 1,
+        ]);
+
+        $updateResponse->assertRedirect(route('admin.services.index'));
+        $this->assertDatabaseHas('posts', [
+            'id' => $service->id,
+            'title' => 'Updated Cloud & DevOps Engineering',
+            'icon' => 'cpu',
+        ]);
+
+        // 6. Delete
+        $deleteResponse = $this->actingAs($this->adminUser)->delete(route('admin.services.destroy', $service));
+        $deleteResponse->assertRedirect(route('admin.services.index'));
+        $this->assertDatabaseMissing('posts', ['id' => $service->id]);
     }
 }

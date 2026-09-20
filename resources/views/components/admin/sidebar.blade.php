@@ -170,6 +170,59 @@
                 </div>
             </div>
 
+            <!-- Collapsible: Services & Offerings -->
+            <div class="space-y-1">
+                <button 
+                    data-sidebar-item
+                    type="button" 
+                    @click="toggleMenu('services')" 
+                    class="w-full flex items-center justify-between px-2.5 py-2 rounded-md text-xs font-semibold transition-all {{ request()->routeIs('admin.services.*') ? 'text-brand-600 bg-brand-50/60' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80' }}"
+                    :class="sidebarState === 'collapsed' ? 'justify-center px-0' : ''"
+                    title="Services"
+                >
+                    <div class="flex items-center gap-3 min-w-0">
+                        <svg class="w-4 h-4 shrink-0 {{ request()->routeIs('admin.services.*') ? 'text-brand-600' : 'text-slate-500' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                        </svg>
+                        <span data-sidebar-collapsible x-show="sidebarState !== 'collapsed'" x-cloak class="truncate">Services</span>
+                    </div>
+                    <svg 
+                        data-sidebar-collapsible
+                        class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200 shrink-0" 
+                        :class="openMenus.services ? 'rotate-90' : ''" 
+                        x-show="sidebarState !== 'collapsed'" 
+                        x-cloak 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                    >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+
+                <!-- Submenu -->
+                <div 
+                    data-sidebar-collapsible
+                    x-show="openMenus.services && sidebarState !== 'collapsed'" 
+                    x-cloak 
+                    x-collapse 
+                    class="ml-5 pl-2.5 border-l border-slate-200/90 space-y-1 my-1"
+                >
+                    <a 
+                        href="{{ route('admin.services.index') }}" 
+                        class="block px-2 py-1.5 rounded-lg text-xs transition-colors {{ request()->routeIs('admin.services.index') ? 'text-brand-600 font-bold bg-brand-50' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/60' }}"
+                    >
+                        All Services
+                    </a>
+                    <a 
+                        href="{{ route('admin.services.create') }}" 
+                        class="block px-2 py-1.5 rounded-lg text-xs transition-colors {{ request()->routeIs('admin.services.create') ? 'text-brand-600 font-bold bg-brand-50' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/60' }}"
+                    >
+                        Add Service
+                    </a>
+                </div>
+            </div>
+
             <!-- Collapsible: Inquiries & Leads -->
             <div class="space-y-1">
                 <button 
@@ -402,6 +455,7 @@
                 <a href="{{ route('admin.dashboard') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('admin.dashboard') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">Dashboard</a>
                 <a href="{{ route('admin.posts.index') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('admin.posts.*') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">Articles</a>
                 <a href="{{ route('admin.projects.index') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('admin.projects.*') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">Case Studies</a>
+                <a href="{{ route('admin.services.index') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('admin.services.*') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">Services</a>
                 <a href="{{ route('admin.forms.entries.index') }}" class="flex items-center justify-between px-3 py-2 rounded-md font-semibold {{ request()->routeIs('admin.forms.entries.*') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">
                     <span>Inquiries & Leads</span>
                     @if ($newInquiriesCount > 0)
