@@ -14,7 +14,7 @@
     <div class="h-14 flex items-center px-3 border-b border-slate-200/80 shrink-0">
         <div 
             data-sidebar-item
-            class="flex items-center w-full p-2 rounded-xl hover:bg-slate-100/80 transition-colors cursor-pointer"
+            class="flex items-center w-full p-2 rounded-md hover:bg-slate-100/80 transition-colors cursor-pointer"
             :class="sidebarState === 'collapsed' ? 'justify-center px-0' : 'gap-3'"
             title="VIP Digital Hub"
         >
@@ -53,7 +53,7 @@
                 <a 
                     data-sidebar-item
                     href="{{ route('admin.dashboard') }}" 
-                    class="flex items-center gap-3 px-2.5 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('admin.dashboard') ? 'bg-brand-50 text-brand-600 font-bold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80' }}"
+                    class="flex items-center gap-3 px-2.5 py-2 rounded-md text-xs font-semibold transition-all {{ request()->routeIs('admin.dashboard') ? 'bg-brand-50 text-brand-600 font-bold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80' }}"
                     :class="sidebarState === 'collapsed' ? 'justify-center px-0' : ''"
                     title="Dashboard"
                 >
@@ -70,7 +70,7 @@
                     data-sidebar-item
                     type="button" 
                     @click="toggleMenu('posts')" 
-                    class="w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('admin.posts.*') ? 'text-brand-600 bg-brand-50/60' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80' }}"
+                    class="w-full flex items-center justify-between px-2.5 py-2 rounded-md text-xs font-semibold transition-all {{ request()->routeIs('admin.posts.*') ? 'text-brand-600 bg-brand-50/60' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80' }}"
                     :class="sidebarState === 'collapsed' ? 'justify-center px-0' : ''"
                     title="Articles & Guides"
                 >
@@ -123,7 +123,7 @@
                     data-sidebar-item
                     type="button" 
                     @click="toggleMenu('projects')" 
-                    class="w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('admin.projects.*') ? 'text-brand-600 bg-brand-50/60' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80' }}"
+                    class="w-full flex items-center justify-between px-2.5 py-2 rounded-md text-xs font-semibold transition-all {{ request()->routeIs('admin.projects.*') ? 'text-brand-600 bg-brand-50/60' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80' }}"
                     :class="sidebarState === 'collapsed' ? 'justify-center px-0' : ''"
                     title="Case Studies"
                 >
@@ -176,7 +176,7 @@
                     data-sidebar-item
                     type="button" 
                     @click="toggleMenu('inquiries')" 
-                    class="w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('admin.forms.entries.*') ? 'text-brand-600 bg-brand-50/60' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80' }}"
+                    class="w-full flex items-center justify-between px-2.5 py-2 rounded-md text-xs font-semibold transition-all {{ request()->routeIs('admin.forms.entries.*') ? 'text-brand-600 bg-brand-50/60' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80' }}"
                     :class="sidebarState === 'collapsed' ? 'justify-center px-0' : ''"
                     title="Inquiries & Leads"
                 >
@@ -257,7 +257,7 @@
                 <a 
                     data-sidebar-item
                     href="{{ route('admin.settings.index') }}" 
-                    class="flex items-center gap-3 px-2.5 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('admin.settings.*') ? 'bg-brand-50 text-brand-600 font-bold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80' }}"
+                    class="flex items-center gap-3 px-2.5 py-2 rounded-md text-xs font-semibold transition-all {{ request()->routeIs('admin.settings.*') ? 'bg-brand-50 text-brand-600 font-bold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80' }}"
                     :class="sidebarState === 'collapsed' ? 'justify-center px-0' : ''"
                     title="Global Site Settings"
                 >
@@ -274,7 +274,7 @@
                     data-sidebar-item
                     href="{{ route('home') }}" 
                     target="_blank" 
-                    class="flex items-center gap-3 px-2.5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 transition-all"
+                    class="flex items-center gap-3 px-2.5 py-2 rounded-md text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 transition-all"
                     :class="sidebarState === 'collapsed' ? 'justify-center px-0' : ''"
                     title="View Live Website"
                 >
@@ -293,7 +293,7 @@
             data-sidebar-item
             type="button" 
             @click="userDropdownOpen = !userDropdownOpen" 
-            class="flex items-center w-full p-2 rounded-xl hover:bg-slate-100/80 transition-colors text-left"
+            class="flex items-center w-full p-2 rounded-md hover:bg-slate-100/80 transition-colors text-left"
             :class="sidebarState === 'collapsed' ? 'justify-center px-0' : 'gap-3'"
             title="{{ $user?->name ?? 'Admin Profile' }}"
         >
@@ -321,7 +321,7 @@
             x-transition:enter="transition ease-out duration-100" 
             x-transition:enter-start="transform opacity-0 scale-95" 
             x-transition:enter-end="transform opacity-100 scale-100" 
-            class="absolute bottom-16 left-2 right-2 bg-white rounded-2xl border border-slate-200 shadow-xl p-1.5 space-y-1 z-50 text-xs"
+            class="absolute bottom-16 left-2 right-2 bg-white rounded-md border border-slate-200 shadow-xl p-1.5 space-y-1 z-50 text-xs"
             :class="sidebarState === 'collapsed' ? 'w-56 left-16' : ''"
         >
             <div class="px-3 py-2 border-b border-slate-100">
@@ -399,24 +399,24 @@
         <div class="flex-1 overflow-y-auto p-4 space-y-4 text-xs">
             <div class="space-y-1">
                 <div class="px-2 text-[10px] font-bold uppercase tracking-wider text-slate-400 font-mono">Navigation</div>
-                <a href="{{ route('admin.dashboard') }}" class="block px-3 py-2 rounded-xl font-semibold {{ request()->routeIs('admin.dashboard') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">Dashboard</a>
-                <a href="{{ route('admin.posts.index') }}" class="block px-3 py-2 rounded-xl font-semibold {{ request()->routeIs('admin.posts.*') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">Articles</a>
-                <a href="{{ route('admin.projects.index') }}" class="block px-3 py-2 rounded-xl font-semibold {{ request()->routeIs('admin.projects.*') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">Case Studies</a>
-                <a href="{{ route('admin.forms.entries.index') }}" class="flex items-center justify-between px-3 py-2 rounded-xl font-semibold {{ request()->routeIs('admin.forms.entries.*') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">
+                <a href="{{ route('admin.dashboard') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('admin.dashboard') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">Dashboard</a>
+                <a href="{{ route('admin.posts.index') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('admin.posts.*') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">Articles</a>
+                <a href="{{ route('admin.projects.index') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('admin.projects.*') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">Case Studies</a>
+                <a href="{{ route('admin.forms.entries.index') }}" class="flex items-center justify-between px-3 py-2 rounded-md font-semibold {{ request()->routeIs('admin.forms.entries.*') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">
                     <span>Inquiries & Leads</span>
                     @if ($newInquiriesCount > 0)
                         <span class="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500 text-white">{{ $newInquiriesCount }}</span>
                     @endif
                 </a>
-                <a href="{{ route('admin.settings.index') }}" class="block px-3 py-2 rounded-xl font-semibold {{ request()->routeIs('admin.settings.*') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">Site Settings</a>
-                <a href="{{ route('home') }}" target="_blank" class="block px-3 py-2 rounded-xl font-semibold text-brand-600 hover:bg-slate-100">View Live Website &rarr;</a>
+                <a href="{{ route('admin.settings.index') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('admin.settings.*') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100' }}">Site Settings</a>
+                <a href="{{ route('home') }}" target="_blank" class="block px-3 py-2 rounded-md font-semibold text-brand-600 hover:bg-slate-100">View Live Website &rarr;</a>
             </div>
         </div>
 
         <div class="p-4 border-t border-slate-200">
             <form action="{{ route('admin.logout') }}" method="POST">
                 @csrf
-                <button type="submit" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-rose-200 text-rose-600 font-semibold text-xs hover:bg-rose-50">
+                <button type="submit" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-md border border-rose-200 text-rose-600 font-semibold text-xs hover:bg-rose-50">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
                     <span>Sign Out</span>
                 </button>

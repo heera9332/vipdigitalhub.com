@@ -6,7 +6,7 @@
 ])
 
 @php
-    $baseClasses = 'group relative inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 ease-out focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-[0.97] select-none disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer';
+    $baseClasses = 'group relative inline-flex items-center justify-center font-medium rounded-md transition-all duration-200 ease-out focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-[0.97] select-none disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer';
     
     $variantClasses = match ($variant) {
         'primary' => 'bg-brand-500 hover:bg-brand-600 text-white shadow-sm shadow-brand-500/25 hover:shadow-lg hover:shadow-brand-500/35 focus:ring-brand-500 hover:-translate-y-0.5 cta-shimmer',

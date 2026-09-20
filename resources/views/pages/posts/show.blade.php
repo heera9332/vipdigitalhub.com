@@ -44,19 +44,19 @@
             <div class="max-w-3xl mx-auto space-y-8">
                 <!-- Article Lead / Excerpt -->
                 @if ($post->excerpt)
-                    <div class="reveal-on-scroll p-6 rounded-2xl bg-brand-50/60 border border-brand-100 text-base text-slate-800 font-medium leading-relaxed shadow-xs">
+                    <div class="reveal-on-scroll p-6 rounded-md bg-brand-50/60 border border-brand-100 text-base text-slate-800 font-medium leading-relaxed shadow-xs">
                         {{ $post->excerpt }}
                     </div>
                 @endif
 
                 <!-- Article Content -->
-                <div class="reveal-on-scroll prose prose-slate prose-lg max-w-none prose-headings:font-extrabold prose-headings:text-slate-950 prose-a:text-brand-600 prose-a:font-semibold hover:prose-a:text-brand-700 prose-img:rounded-2xl prose-img:shadow-md text-slate-700 leading-relaxed">
+                <div class="reveal-on-scroll prose prose-slate prose-lg max-w-none prose-headings:font-extrabold prose-headings:text-slate-950 prose-a:text-brand-600 prose-a:font-semibold hover:prose-a:text-brand-700 prose-img:rounded-md prose-img:shadow-md text-slate-700 leading-relaxed">
                     {!! $post->content !!}
                 </div>
 
                 <!-- Author Bio Box -->
-                <div class="reveal-on-scroll p-8 rounded-2xl border border-slate-200/90 bg-slate-50 flex flex-col sm:flex-row items-center sm:items-start gap-5 mt-12 shadow-xs hover:border-brand-200 transition-colors">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 text-white flex items-center justify-center font-bold text-xl shrink-0 shadow-sm">
+                <div class="reveal-on-scroll p-8 rounded-md border border-slate-200/90 bg-slate-50 flex flex-col sm:flex-row items-center sm:items-start gap-5 mt-12 shadow-xs hover:border-brand-200 transition-colors">
+                    <div class="w-14 h-14 rounded-md bg-gradient-to-br from-brand-500 to-brand-600 text-white flex items-center justify-center font-bold text-xl shrink-0 shadow-sm">
                         {{ substr($post->author, 0, 1) }}
                     </div>
                     <div class="space-y-1.5 text-center sm:text-left">

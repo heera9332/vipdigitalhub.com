@@ -7,10 +7,10 @@
     'cta' => 'Learn More & Inquire',
 ])
 
-<div class="group relative rounded-2xl border border-slate-200/90 bg-white p-7 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-brand-300 hover:-translate-y-1.5 flex flex-col justify-between">
+<div class="group relative rounded-md border border-slate-200/90 bg-white p-7 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-brand-300 hover:-translate-y-1.5 flex flex-col justify-between">
     <div>
         <!-- Icon Container -->
-        <div class="w-12 h-12 rounded-xl bg-brand-50 border border-brand-100/80 flex items-center justify-center text-brand-600 mb-5 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300 shadow-sm">
+        <div class="w-12 h-12 rounded-md bg-brand-50 border border-brand-100/80 flex items-center justify-center text-brand-600 mb-5 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300 shadow-sm">
             @if ($icon === 'globe')
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
             @elseif ($icon === 'code')

@@ -25,7 +25,7 @@
     x-transition:leave="transition ease-in duration-200"
     x-transition:leave-start="opacity-100 scale-100"
     x-transition:leave-end="opacity-0 scale-95"
-    class="flex items-start justify-between gap-3 p-4 rounded-xl border {{ $typeClasses }} shadow-sm mb-6"
+    class="flex items-start justify-between gap-3 p-4 rounded-md border {{ $typeClasses }} shadow-sm mb-6"
     role="alert"
 >
     <div class="flex items-start gap-3">

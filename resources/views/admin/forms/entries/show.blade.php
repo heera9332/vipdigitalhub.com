@@ -8,7 +8,7 @@
             </div>
             <a 
                 href="{{ route('admin.forms.entries.index') }}" 
-                class="px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
+                class="px-3 py-1.5 rounded-md border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
             >
                 &larr; Back to Inquiries
             </a>
@@ -19,7 +19,7 @@
         <!-- Inquiry Message & Scope -->
         <div class="lg:col-span-8 space-y-6">
             <!-- Message Details -->
-            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/90 shadow-xs space-y-6">
+            <div class="bg-white p-6 sm:p-8 rounded-md border border-slate-200/90 shadow-xs space-y-6">
                 <div>
                     <div class="flex items-center justify-between">
                         <span class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">Service Requirement</span>
@@ -30,7 +30,7 @@
                     </h2>
                 </div>
 
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+                <div class="p-4 rounded-md bg-slate-50 border border-slate-100 flex items-center justify-between">
                     <div>
                         <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Estimated Budget</div>
                         <div class="text-base font-bold text-brand-600 mt-0.5">{{ $entry->budget ?? 'Not Specified' }}</div>
@@ -43,7 +43,7 @@
 
                 <div class="space-y-2">
                     <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400">Project Scope & Message</h3>
-                    <div class="p-6 rounded-2xl border border-slate-200 bg-slate-50/50 text-slate-800 text-sm sm:text-base leading-relaxed whitespace-pre-line font-normal">
+                    <div class="p-6 rounded-md border border-slate-200 bg-slate-50/50 text-slate-800 text-sm sm:text-base leading-relaxed whitespace-pre-line font-normal">
                         {{ $entry->message }}
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                 <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center gap-3">
                     <a 
                         href="mailto:{{ $entry->email }}?subject={{ urlencode('Regarding your inquiry with VIP Digital Hub: ' . ($entry->service ?? 'Project Discussion')) }}" 
-                        class="cta-shimmer inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold text-xs shadow-sm shadow-brand-500/25 transition-all"
+                        class="cta-shimmer inline-flex items-center gap-2 px-4 py-2.5 rounded-md bg-brand-500 hover:bg-brand-600 text-white font-semibold text-xs shadow-sm shadow-brand-500/25 transition-all"
                     >
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                         <span>Reply by Email</span>
@@ -62,14 +62,14 @@
                         <a 
                             href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $entry->phone) }}" 
                             target="_blank" 
-                            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs transition-all shadow-xs"
+                            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs transition-all shadow-xs"
                         >
                             <span>WhatsApp Client</span>
                         </a>
 
                         <a 
                             href="tel:{{ preg_replace('/[^0-9+]/', '', $entry->phone) }}" 
-                            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 font-semibold text-xs transition-all"
+                            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-md border border-slate-200 text-slate-700 hover:bg-slate-50 font-semibold text-xs transition-all"
                         >
                             <span>Call {{ $entry->phone }}</span>
                         </a>
@@ -81,7 +81,7 @@
         <!-- Sidebar: Status & Technical Meta -->
         <div class="lg:col-span-4 space-y-6">
             <!-- Lead Status Manager -->
-            <div class="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-xs space-y-4">
+            <div class="bg-white p-4 rounded-md border border-slate-200/90 shadow-xs space-y-4">
                 <h3 class="text-sm font-bold text-slate-950">Lead Status Workflow</h3>
 
                 <form action="{{ route('admin.forms.entries.status', $entry) }}" method="POST" class="space-y-4">
@@ -95,7 +95,7 @@
                         <select 
                             name="status" 
                             id="status" 
-                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500"
+                            class="w-full px-3.5 py-2.5 rounded-md border border-slate-300 bg-white text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500"
                         >
                             <option value="new" {{ $entry->status === 'new' ? 'selected' : '' }}>New (Awaiting Review)</option>
                             <option value="contacted" {{ $entry->status === 'contacted' ? 'selected' : '' }}>Contacted (Initial Reachout)</option>
@@ -106,7 +106,7 @@
 
                     <button 
                         type="submit" 
-                        class="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-slate-900 text-white font-semibold text-xs hover:bg-slate-800 transition-colors"
+                        class="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-md bg-slate-900 text-white font-semibold text-xs hover:bg-slate-800 transition-colors"
                     >
                         Update Lead Status
                     </button>
@@ -114,7 +114,7 @@
             </div>
 
             <!-- Client Contact Information -->
-            <div class="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-xs space-y-4 text-xs">
+            <div class="bg-white p-4 rounded-md border border-slate-200/90 shadow-xs space-y-4 text-xs">
                 <h3 class="text-sm font-bold text-slate-950">Client Details</h3>
 
                 <div class="space-y-3 divide-y divide-slate-100">
@@ -154,7 +154,7 @@
             </div>
 
             <!-- Technical Tracking Data -->
-            <div class="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-xs space-y-3 text-xs text-slate-600">
+            <div class="bg-white p-6 rounded-md border border-slate-200/90 shadow-xs space-y-3 text-xs text-slate-600">
                 <h3 class="text-sm font-bold text-slate-950">Technical Metadata</h3>
                 <div>
                     <span class="text-slate-400 font-semibold uppercase text-[10px]">IP Address:</span>
@@ -167,13 +167,13 @@
             </div>
 
             <!-- Danger Zone -->
-            <div class="bg-white p-6 rounded-3xl border border-rose-100 shadow-xs">
+            <div class="bg-white p-6 rounded-md border border-rose-100 shadow-xs">
                 <form action="{{ route('admin.forms.entries.destroy', $entry) }}" method="POST" onsubmit="return confirm('Are you sure you want to permanently delete this inquiry?');">
                     @csrf
                     @method('DELETE')
                     <button 
                         type="submit" 
-                        class="w-full px-4 py-2.5 rounded-xl border border-rose-200 text-rose-600 font-semibold text-xs hover:bg-rose-50 transition-colors"
+                        class="w-full px-4 py-2.5 rounded-md border border-rose-200 text-rose-600 font-semibold text-xs hover:bg-rose-50 transition-colors"
                     >
                         Permanently Delete Inquiry
                     </button>

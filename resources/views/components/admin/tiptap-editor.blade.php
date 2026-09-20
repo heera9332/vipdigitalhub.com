@@ -16,7 +16,7 @@
         </label>
     @endif
 
-    <div class="rounded-2xl border border-slate-300 bg-white overflow-hidden shadow-xs focus-within:ring-2 focus-within:ring-brand-500/40 focus-within:border-brand-500 transition-all">
+    <div class="rounded-md border border-slate-300 bg-white overflow-hidden shadow-xs focus-within:ring-2 focus-within:ring-brand-500/40 focus-within:border-brand-500 transition-all">
         <!-- TipTap Action Toolbar -->
         <div class="flex flex-wrap items-center gap-1 p-2 bg-slate-50 border-b border-slate-200/90 text-slate-700">
             <!-- Text Styling -->

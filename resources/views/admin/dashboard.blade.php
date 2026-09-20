@@ -10,7 +10,7 @@
         <!-- Quick Stats Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             <!-- Inquiries Card -->
-            <div class="p-5 rounded-2xl border border-slate-200 bg-white shadow-xs flex items-center justify-between">
+            <div class="p-5 rounded-md border border-slate-200 bg-white shadow-xs flex items-center justify-between">
                 <div>
                     <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Project Inquiries</div>
                     <div class="text-3xl font-extrabold text-slate-950 mt-1">{{ $stats['totalInquiries'] }}</div>
@@ -18,13 +18,13 @@
                         {{ $stats['newInquiries'] }} new / unreviewed
                     </div>
                 </div>
-                <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                <div class="w-12 h-12 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                 </div>
             </div>
 
             <!-- Published Posts Card -->
-            <div class="p-5 rounded-2xl border border-slate-200 bg-white shadow-xs flex items-center justify-between">
+            <div class="p-5 rounded-md border border-slate-200 bg-white shadow-xs flex items-center justify-between">
                 <div>
                     <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Knowledge Base</div>
                     <div class="text-3xl font-extrabold text-slate-950 mt-1">{{ $stats['totalPosts'] }}</div>
@@ -32,13 +32,13 @@
                         {{ $stats['publishedPosts'] }} published articles
                     </div>
                 </div>
-                <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                <div class="w-12 h-12 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
                 </div>
             </div>
 
             <!-- Projects Card -->
-            <div class="p-5 rounded-2xl border border-slate-200 bg-white shadow-xs flex items-center justify-between">
+            <div class="p-5 rounded-md border border-slate-200 bg-white shadow-xs flex items-center justify-between">
                 <div>
                     <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Client Work</div>
                     <div class="text-3xl font-extrabold text-slate-950 mt-1">{{ $stats['totalProjects'] }}</div>
@@ -46,19 +46,19 @@
                         {{ $stats['featuredProjects'] }} featured platforms
                     </div>
                 </div>
-                <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center shrink-0">
+                <div class="w-12 h-12 rounded-md bg-brand-50 text-brand-600 flex items-center justify-center shrink-0">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                 </div>
             </div>
 
             <!-- Quick Action Card -->
-            <div class="p-5 rounded-2xl border border-brand-200 bg-gradient-to-br from-brand-500 to-amber-500 text-white shadow-sm flex flex-col justify-between">
+            <div class="p-5 rounded-md border border-brand-200 bg-gradient-to-br from-brand-500 to-amber-500 text-white shadow-sm flex flex-col justify-between">
                 <div>
                     <div class="text-xs font-semibold uppercase tracking-wider text-amber-100">Quick Operations</div>
                     <div class="text-lg font-bold mt-1">Publish Article</div>
                 </div>
                 <div class="pt-3">
-                    <a href="{{ route('admin.posts.create') }}" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white text-slate-950 font-bold text-xs hover:bg-slate-50 transition-colors shadow-xs">
+                    <a href="{{ route('admin.posts.create') }}" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-white text-slate-950 font-bold text-xs hover:bg-slate-50 transition-colors shadow-xs">
                         <span>New Post</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </a>
@@ -69,7 +69,7 @@
         <!-- Two-column tables: Recent Inquiries & Recent Posts -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <!-- Recent Inquiries -->
-            <div class="lg:col-span-7 bg-white rounded-3xl border border-slate-200/90 shadow-xs overflow-hidden">
+            <div class="lg:col-span-7 bg-white rounded-md border border-slate-200/90 shadow-xs overflow-hidden">
                 <div class="p-5 sm:p-6 border-b border-slate-100 flex items-center justify-between">
                     <div>
                         <h2 class="text-base font-bold text-slate-950">Recent Client Inquiries</h2>
@@ -134,7 +134,7 @@
             </div>
 
             <!-- Recent Posts -->
-            <div class="lg:col-span-5 bg-white rounded-3xl border border-slate-200/90 shadow-xs overflow-hidden">
+            <div class="lg:col-span-5 bg-white rounded-md border border-slate-200/90 shadow-xs overflow-hidden">
                 <div class="p-5 sm:p-6 border-b border-slate-100 flex items-center justify-between">
                     <div>
                         <h2 class="text-base font-bold text-slate-950">Recent Articles</h2>

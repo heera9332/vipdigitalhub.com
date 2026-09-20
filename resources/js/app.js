@@ -33,7 +33,7 @@ Alpine.data('tiptapEditor', (config = {}) => ({
                 }),
                 Image.configure({
                     HTMLAttributes: {
-                        class: 'rounded-xl max-w-full my-4 shadow-sm border border-slate-200',
+                        class: 'rounded-md max-w-full my-4 shadow-sm border border-slate-200',
                     },
                 }),
             ],

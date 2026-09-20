@@ -16,7 +16,7 @@
             <!-- Col 1 & 2: Agency info -->
             <div class="lg:col-span-2 space-y-5">
                 <a href="{{ route('home') }}" class="flex items-center gap-3 group">
-                    <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-brand-600 text-white font-bold text-lg shadow-sm shadow-brand-500/20">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-md bg-gradient-to-br from-brand-500 to-brand-600 text-white font-bold text-lg shadow-sm shadow-brand-500/20">
                         V
                     </span>
                     <span class="text-xl font-bold tracking-tight text-white">

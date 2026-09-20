@@ -43,19 +43,19 @@
 
                 <!-- Staggered Entrance Item 5: Proof Points with Animated Counters -->
                 <div class="animate-fade-in-up delay-400 pt-8 border-t border-slate-200/60 grid grid-cols-2 sm:grid-cols-4 gap-6 text-left">
-                    <div class="p-3 rounded-xl hover:bg-white/60 transition-colors">
+                    <div class="p-3 rounded-md hover:bg-white/60 transition-colors">
                         <div class="text-2xl sm:text-3xl font-extrabold text-slate-900" data-counter="50" data-counter-suffix="+">50+</div>
                         <div class="text-xs text-slate-500 font-medium">Projects Delivered</div>
                     </div>
-                    <div class="p-3 rounded-xl hover:bg-white/60 transition-colors">
+                    <div class="p-3 rounded-md hover:bg-white/60 transition-colors">
                         <div class="text-2xl sm:text-3xl font-extrabold text-slate-900" data-counter="99" data-counter-suffix="%">99%</div>
                         <div class="text-xs text-slate-500 font-medium">On-Time Completion</div>
                     </div>
-                    <div class="p-3 rounded-xl hover:bg-white/60 transition-colors">
+                    <div class="p-3 rounded-md hover:bg-white/60 transition-colors">
                         <div class="text-2xl sm:text-3xl font-extrabold text-slate-900" data-counter="8" data-counter-suffix="+ Yrs">8+ Yrs</div>
                         <div class="text-xs text-slate-500 font-medium">Engineering Depth</div>
                     </div>
-                    <div class="p-3 rounded-xl hover:bg-white/60 transition-colors">
+                    <div class="p-3 rounded-md hover:bg-white/60 transition-colors">
                         <div class="text-2xl sm:text-3xl font-extrabold text-slate-900">24/7</div>
                         <div class="text-xs text-slate-500 font-medium">Dedicated Support</div>
                     </div>
@@ -139,7 +139,7 @@
                     </p>
 
                     <div class="space-y-3.5 pt-2">
-                        <div class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors">
+                        <div class="flex items-start gap-3 p-3 rounded-md hover:bg-slate-50 transition-colors">
                             <div class="w-6 h-6 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center shrink-0 mt-0.5">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                             </div>
@@ -147,7 +147,7 @@
                                 <strong class="font-semibold text-slate-900">Zero Technical Debt:</strong> Clean Eloquent queries, normalized schemas, and automated testing ensure your software never becomes legacy after launch.
                             </div>
                         </div>
-                        <div class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors">
+                        <div class="flex items-start gap-3 p-3 rounded-md hover:bg-slate-50 transition-colors">
                             <div class="w-6 h-6 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center shrink-0 mt-0.5">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                             </div>
@@ -155,7 +155,7 @@
                                 <strong class="font-semibold text-slate-900">Direct Partner Access:</strong> Work directly with seasoned senior engineers and marketing strategists without intermediary layers.
                             </div>
                         </div>
-                        <div class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors">
+                        <div class="flex items-start gap-3 p-3 rounded-md hover:bg-slate-50 transition-colors">
                             <div class="w-6 h-6 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center shrink-0 mt-0.5">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                             </div>
@@ -175,15 +175,15 @@
 
                 <!-- Visual Comparison / Capabilities Card -->
                 <div class="reveal-on-scroll relative" data-reveal-delay="200">
-                    <div class="absolute -inset-4 bg-gradient-to-r from-brand-500/20 to-amber-500/20 rounded-3xl blur-2xl -z-10 animate-pulse-glow"></div>
-                    <div class="rounded-3xl border border-slate-200/90 bg-slate-950 text-white p-8 sm:p-10 shadow-2xl space-y-8">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-brand-500/20 to-amber-500/20 rounded-md blur-2xl -z-10 animate-pulse-glow"></div>
+                    <div class="rounded-md border border-slate-200/90 bg-slate-950 text-white p-8 sm:p-10 shadow-2xl space-y-8">
                         <div>
                             <div class="text-xs font-mono uppercase tracking-widest text-brand-400 mb-2">Capabilities Matrix</div>
                             <h3 class="text-2xl font-bold tracking-tight text-white">Full-Stack Digital Powerhouse</h3>
                         </div>
 
                         <div class="space-y-6">
-                            <div class="p-4.5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-2 hover:border-brand-500/40 hover:bg-slate-900 transition-all">
+                            <div class="p-4.5 rounded-md bg-slate-900/90 border border-slate-800 space-y-2 hover:border-brand-500/40 hover:bg-slate-900 transition-all">
                                 <div class="flex items-center justify-between text-sm font-semibold text-white">
                                     <span>Software & Cloud Architecture</span>
                                     <span class="text-brand-400 font-mono text-xs">Enterprise Ready</span>
@@ -193,7 +193,7 @@
                                 </p>
                             </div>
 
-                            <div class="p-4.5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-2 hover:border-brand-500/40 hover:bg-slate-900 transition-all">
+                            <div class="p-4.5 rounded-md bg-slate-900/90 border border-slate-800 space-y-2 hover:border-brand-500/40 hover:bg-slate-900 transition-all">
                                 <div class="flex items-center justify-between text-sm font-semibold text-white">
                                     <span>Modern Web & Mobile Interfaces</span>
                                     <span class="text-brand-400 font-mono text-xs">Sub-Second UX</span>
@@ -203,7 +203,7 @@
                                 </p>
                             </div>
 
-                            <div class="p-4.5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-2 hover:border-brand-500/40 hover:bg-slate-900 transition-all">
+                            <div class="p-4.5 rounded-md bg-slate-900/90 border border-slate-800 space-y-2 hover:border-brand-500/40 hover:bg-slate-900 transition-all">
                                 <div class="flex items-center justify-between text-sm font-semibold text-white">
                                     <span>Growth & Marketing Engineering</span>
                                     <span class="text-brand-400 font-mono text-xs">High ROI</span>
@@ -263,8 +263,8 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Step 1 -->
-                <div class="reveal-on-scroll relative p-7 rounded-2xl border border-slate-200/90 bg-slate-50/70 space-y-4 hover:shadow-md hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="0">
-                    <div class="w-10 h-10 rounded-xl bg-brand-500 text-white font-mono font-bold flex items-center justify-center text-sm shadow-sm shadow-brand-500/20">
+                <div class="reveal-on-scroll relative p-7 rounded-md border border-slate-200/90 bg-slate-50/70 space-y-4 hover:shadow-md hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="0">
+                    <div class="w-10 h-10 rounded-md bg-brand-500 text-white font-mono font-bold flex items-center justify-center text-sm shadow-sm shadow-brand-500/20">
                         01
                     </div>
                     <h3 class="text-lg font-bold text-slate-900">Discovery & Strategy</h3>
@@ -274,8 +274,8 @@
                 </div>
 
                 <!-- Step 2 -->
-                <div class="reveal-on-scroll relative p-7 rounded-2xl border border-slate-200/90 bg-slate-50/70 space-y-4 hover:shadow-md hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="100">
-                    <div class="w-10 h-10 rounded-xl bg-brand-500 text-white font-mono font-bold flex items-center justify-center text-sm shadow-sm shadow-brand-500/20">
+                <div class="reveal-on-scroll relative p-7 rounded-md border border-slate-200/90 bg-slate-50/70 space-y-4 hover:shadow-md hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="100">
+                    <div class="w-10 h-10 rounded-md bg-brand-500 text-white font-mono font-bold flex items-center justify-center text-sm shadow-sm shadow-brand-500/20">
                         02
                     </div>
                     <h3 class="text-lg font-bold text-slate-900">Architecture & UX</h3>
@@ -285,8 +285,8 @@
                 </div>
 
                 <!-- Step 3 -->
-                <div class="reveal-on-scroll relative p-7 rounded-2xl border border-slate-200/90 bg-slate-50/70 space-y-4 hover:shadow-md hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="200">
-                    <div class="w-10 h-10 rounded-xl bg-brand-500 text-white font-mono font-bold flex items-center justify-center text-sm shadow-sm shadow-brand-500/20">
+                <div class="reveal-on-scroll relative p-7 rounded-md border border-slate-200/90 bg-slate-50/70 space-y-4 hover:shadow-md hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="200">
+                    <div class="w-10 h-10 rounded-md bg-brand-500 text-white font-mono font-bold flex items-center justify-center text-sm shadow-sm shadow-brand-500/20">
                         03
                     </div>
                     <h3 class="text-lg font-bold text-slate-900">Agile Engineering</h3>
@@ -296,8 +296,8 @@
                 </div>
 
                 <!-- Step 4 -->
-                <div class="reveal-on-scroll relative p-7 rounded-2xl border border-slate-200/90 bg-slate-50/70 space-y-4 hover:shadow-md hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="300">
-                    <div class="w-10 h-10 rounded-xl bg-brand-500 text-white font-mono font-bold flex items-center justify-center text-sm shadow-sm shadow-brand-500/20">
+                <div class="reveal-on-scroll relative p-7 rounded-md border border-slate-200/90 bg-slate-50/70 space-y-4 hover:shadow-md hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="300">
+                    <div class="w-10 h-10 rounded-md bg-brand-500 text-white font-mono font-bold flex items-center justify-center text-sm shadow-sm shadow-brand-500/20">
                         04
                     </div>
                     <h3 class="text-lg font-bold text-slate-900">Launch & Scale</h3>

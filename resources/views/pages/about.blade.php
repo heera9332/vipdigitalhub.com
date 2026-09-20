@@ -25,8 +25,8 @@
     <x-ui.section spacing="default" class="bg-white">
         <x-ui.container>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-                <div class="reveal-on-scroll p-8 sm:p-10 rounded-3xl border border-slate-200/90 bg-slate-50/60 space-y-4 hover:shadow-lg hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="0">
-                    <div class="w-12 h-12 rounded-xl bg-brand-500 text-white flex items-center justify-center shadow-sm shadow-brand-500/25">
+                <div class="reveal-on-scroll p-8 sm:p-10 rounded-md border border-slate-200/90 bg-slate-50/60 space-y-4 hover:shadow-lg hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="0">
+                    <div class="w-12 h-12 rounded-md bg-brand-500 text-white flex items-center justify-center shadow-sm shadow-brand-500/25">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     </div>
                     <h2 class="text-2xl font-bold text-slate-950">Our Mission</h2>
@@ -35,8 +35,8 @@
                     </p>
                 </div>
 
-                <div class="reveal-on-scroll p-8 sm:p-10 rounded-3xl border border-slate-200/90 bg-slate-50/60 space-y-4 hover:shadow-lg hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="150">
-                    <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-sm">
+                <div class="reveal-on-scroll p-8 sm:p-10 rounded-md border border-slate-200/90 bg-slate-50/60 space-y-4 hover:shadow-lg hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="150">
+                    <div class="w-12 h-12 rounded-md bg-slate-900 text-white flex items-center justify-center shadow-sm">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                     </div>
                     <h2 class="text-2xl font-bold text-slate-950">Our Vision</h2>
@@ -62,7 +62,7 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="reveal-on-scroll p-6 rounded-2xl border border-slate-200 bg-white space-y-3 hover:shadow-md hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="0">
+                <div class="reveal-on-scroll p-6 rounded-md border border-slate-200 bg-white space-y-3 hover:shadow-md hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="0">
                     <div class="text-brand-500 font-mono font-bold text-sm">01. CRAFTSMANSHIP</div>
                     <h3 class="text-lg font-bold text-slate-900">Engineering Rigor</h3>
                     <p class="text-xs text-slate-600 leading-relaxed">
@@ -70,7 +70,7 @@
                     </p>
                 </div>
 
-                <div class="reveal-on-scroll p-6 rounded-2xl border border-slate-200 bg-white space-y-3 hover:shadow-md hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="100">
+                <div class="reveal-on-scroll p-6 rounded-md border border-slate-200 bg-white space-y-3 hover:shadow-md hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="100">
                     <div class="text-brand-500 font-mono font-bold text-sm">02. TRANSPARENCY</div>
                     <h3 class="text-lg font-bold text-slate-900">Radical Candor</h3>
                     <p class="text-xs text-slate-600 leading-relaxed">
@@ -78,7 +78,7 @@
                     </p>
                 </div>
 
-                <div class="reveal-on-scroll p-6 rounded-2xl border border-slate-200 bg-white space-y-3 hover:shadow-md hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="200">
+                <div class="reveal-on-scroll p-6 rounded-md border border-slate-200 bg-white space-y-3 hover:shadow-md hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="200">
                     <div class="text-brand-500 font-mono font-bold text-sm">03. VELOCITY</div>
                     <h3 class="text-lg font-bold text-slate-900">Speed to Value</h3>
                     <p class="text-xs text-slate-600 leading-relaxed">
@@ -86,7 +86,7 @@
                     </p>
                 </div>
 
-                <div class="reveal-on-scroll p-6 rounded-2xl border border-slate-200 bg-white space-y-3 hover:shadow-md hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="300">
+                <div class="reveal-on-scroll p-6 rounded-md border border-slate-200 bg-white space-y-3 hover:shadow-md hover:border-brand-300 hover:-translate-y-1 transition-all duration-300" data-reveal-delay="300">
                     <div class="text-brand-500 font-mono font-bold text-sm">04. ACCOUNTABILITY</div>
                     <h3 class="text-lg font-bold text-slate-900">Client Partnership</h3>
                     <p class="text-xs text-slate-600 leading-relaxed">
@@ -112,7 +112,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Backend -->
-                <div class="reveal-on-scroll p-6 rounded-2xl border border-slate-200/90 bg-slate-50 space-y-4 hover:shadow-md hover:border-brand-300 transition-all duration-300" data-reveal-delay="0">
+                <div class="reveal-on-scroll p-6 rounded-md border border-slate-200/90 bg-slate-50 space-y-4 hover:shadow-md hover:border-brand-300 transition-all duration-300" data-reveal-delay="0">
                     <div class="text-xs font-mono uppercase tracking-wider text-brand-600 font-bold">Backend & APIs</div>
                     <ul class="space-y-2 text-xs text-slate-700 font-medium">
                         <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span> Laravel (Full-Stack / API)</li>
@@ -124,7 +124,7 @@
                 </div>
 
                 <!-- Frontend -->
-                <div class="reveal-on-scroll p-6 rounded-2xl border border-slate-200/90 bg-slate-50 space-y-4 hover:shadow-md hover:border-brand-300 transition-all duration-300" data-reveal-delay="100">
+                <div class="reveal-on-scroll p-6 rounded-md border border-slate-200/90 bg-slate-50 space-y-4 hover:shadow-md hover:border-brand-300 transition-all duration-300" data-reveal-delay="100">
                     <div class="text-xs font-mono uppercase tracking-wider text-brand-600 font-bold">Frontend & UI</div>
                     <ul class="space-y-2 text-xs text-slate-700 font-medium">
                         <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span> Tailwind CSS v4</li>
@@ -136,7 +136,7 @@
                 </div>
 
                 <!-- Data & Caching -->
-                <div class="reveal-on-scroll p-6 rounded-2xl border border-slate-200/90 bg-slate-50 space-y-4 hover:shadow-md hover:border-brand-300 transition-all duration-300" data-reveal-delay="200">
+                <div class="reveal-on-scroll p-6 rounded-md border border-slate-200/90 bg-slate-50 space-y-4 hover:shadow-md hover:border-brand-300 transition-all duration-300" data-reveal-delay="200">
                     <div class="text-xs font-mono uppercase tracking-wider text-brand-600 font-bold">Data & Cache</div>
                     <ul class="space-y-2 text-xs text-slate-700 font-medium">
                         <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span> MySQL & PostgreSQL</li>
@@ -148,7 +148,7 @@
                 </div>
 
                 <!-- Cloud & DevOps -->
-                <div class="reveal-on-scroll p-6 rounded-2xl border border-slate-200/90 bg-slate-50 space-y-4 hover:shadow-md hover:border-brand-300 transition-all duration-300" data-reveal-delay="300">
+                <div class="reveal-on-scroll p-6 rounded-md border border-slate-200/90 bg-slate-50 space-y-4 hover:shadow-md hover:border-brand-300 transition-all duration-300" data-reveal-delay="300">
                     <div class="text-xs font-mono uppercase tracking-wider text-brand-600 font-bold">DevOps & Cloud</div>
                     <ul class="space-y-2 text-xs text-slate-700 font-medium">
                         <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span> Laravel Cloud & Forge</li>

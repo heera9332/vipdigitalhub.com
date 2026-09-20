@@ -2,7 +2,7 @@
     'project',
 ])
 
-<div class="group relative rounded-2xl border border-slate-200/90 bg-white overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:border-brand-300 hover:-translate-y-1.5 flex flex-col justify-between">
+<div class="group relative rounded-md border border-slate-200/90 bg-white overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:border-brand-300 hover:-translate-y-1.5 flex flex-col justify-between">
     <!-- Visual Header / Mockup Banner -->
     <div class="relative h-52 w-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 p-6 flex flex-col justify-between overflow-hidden">
         <div class="absolute inset-0 bg-radial-gradient from-brand-500/15 via-transparent to-transparent"></div>

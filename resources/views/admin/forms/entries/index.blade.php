@@ -14,31 +14,31 @@
             <div class="flex flex-wrap gap-2 w-full sm:w-auto">
                 <a 
                     href="{{ route('admin.forms.entries.index') }}" 
-                    class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all {{ empty($status) ? 'bg-brand-500 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50' }}"
+                    class="px-3 py-1.5 rounded-md text-xs font-semibold transition-all {{ empty($status) ? 'bg-brand-500 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50' }}"
                 >
                     All Leads ({{ $statusCounts['all'] }})
                 </a>
                 <a 
                     href="{{ route('admin.forms.entries.index', ['status' => 'new']) }}" 
-                    class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all {{ $status === 'new' ? 'bg-amber-500 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50' }}"
+                    class="px-3 py-1.5 rounded-md text-xs font-semibold transition-all {{ $status === 'new' ? 'bg-amber-500 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50' }}"
                 >
                     New ({{ $statusCounts['new'] }})
                 </a>
                 <a 
                     href="{{ route('admin.forms.entries.index', ['status' => 'contacted']) }}" 
-                    class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all {{ $status === 'contacted' ? 'bg-blue-600 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50' }}"
+                    class="px-3 py-1.5 rounded-md text-xs font-semibold transition-all {{ $status === 'contacted' ? 'bg-blue-600 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50' }}"
                 >
                     Contacted ({{ $statusCounts['contacted'] }})
                 </a>
                 <a 
                     href="{{ route('admin.forms.entries.index', ['status' => 'in_progress']) }}" 
-                    class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all {{ $status === 'in_progress' ? 'bg-purple-600 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50' }}"
+                    class="px-3 py-1.5 rounded-md text-xs font-semibold transition-all {{ $status === 'in_progress' ? 'bg-purple-600 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50' }}"
                 >
                     In Progress ({{ $statusCounts['in_progress'] }})
                 </a>
                 <a 
                     href="{{ route('admin.forms.entries.index', ['status' => 'closed']) }}" 
-                    class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all {{ $status === 'closed' ? 'bg-slate-800 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50' }}"
+                    class="px-3 py-1.5 rounded-md text-xs font-semibold transition-all {{ $status === 'closed' ? 'bg-slate-800 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50' }}"
                 >
                     Closed ({{ $statusCounts['closed'] }})
                 </a>
@@ -52,7 +52,7 @@
                         name="q" 
                         value="{{ $search ?? '' }}" 
                         placeholder="Search lead or company..." 
-                        class="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-300 bg-white text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500"
+                        class="w-full pl-9 pr-4 py-2 rounded-md border border-slate-300 bg-white text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500"
                     >
                     <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 </div>
@@ -60,7 +60,7 @@
         </div>
 
         <!-- Inquiries Table -->
-        <div class="bg-white rounded-3xl border border-slate-200/90 shadow-xs overflow-hidden">
+        <div class="bg-white rounded-md border border-slate-200/90 shadow-xs overflow-hidden">
             @if ($entries->isNotEmpty())
                 <div class="overflow-x-auto">
                     <table class="w-full text-left text-xs">

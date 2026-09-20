@@ -6,7 +6,7 @@
     'rating' => 5,
 ])
 
-<div class="rounded-2xl border border-slate-200/90 bg-white p-7 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="rounded-md border border-slate-200/90 bg-white p-7 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
     <div>
         <!-- Star rating -->
         <div class="flex items-center gap-1 text-amber-400 mb-4">

@@ -32,19 +32,19 @@
 
                 <!-- Project Meta Grid -->
                 <div class="animate-fade-in-up delay-300 pt-6 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-6 text-left">
-                    <div class="p-3 rounded-xl hover:bg-slate-50 transition-colors">
+                    <div class="p-3 rounded-md hover:bg-slate-50 transition-colors">
                         <div class="text-xs uppercase font-mono text-slate-400 font-semibold">Client</div>
                         <div class="text-sm font-bold text-slate-900 mt-1">{{ $project->client ?? 'Confidential' }}</div>
                     </div>
-                    <div class="p-3 rounded-xl hover:bg-slate-50 transition-colors">
+                    <div class="p-3 rounded-md hover:bg-slate-50 transition-colors">
                         <div class="text-xs uppercase font-mono text-slate-400 font-semibold">Category</div>
                         <div class="text-sm font-bold text-slate-900 mt-1">{{ $project->category }}</div>
                     </div>
-                    <div class="p-3 rounded-xl hover:bg-slate-50 transition-colors">
+                    <div class="p-3 rounded-md hover:bg-slate-50 transition-colors">
                         <div class="text-xs uppercase font-mono text-slate-400 font-semibold">Year</div>
                         <div class="text-sm font-bold text-slate-900 mt-1">{{ $project->year ?? date('Y') }}</div>
                     </div>
-                    <div class="p-3 rounded-xl hover:bg-slate-50 transition-colors">
+                    <div class="p-3 rounded-md hover:bg-slate-50 transition-colors">
                         <div class="text-xs uppercase font-mono text-slate-400 font-semibold">Live URL</div>
                         <div class="text-sm font-bold text-brand-600 mt-1">
                             @if ($project->project_url)
@@ -69,7 +69,7 @@
                 <!-- Main Content -->
                 <div class="lg:col-span-2 space-y-8">
                     <!-- Stylized Terminal / App Preview Mockup -->
-                    <div class="reveal-on-scroll rounded-2xl border border-slate-800 bg-slate-950 p-6 shadow-xl text-white space-y-4">
+                    <div class="reveal-on-scroll rounded-md border border-slate-800 bg-slate-950 p-6 shadow-xl text-white space-y-4">
                         <div class="flex items-center justify-between pb-4 border-b border-slate-800">
                             <div class="flex items-center gap-2">
                                 <span class="w-3 h-3 rounded-full bg-rose-500"></span>
@@ -96,19 +96,19 @@
                     <div class="reveal-on-scroll space-y-4 pt-4 border-t border-slate-100" data-reveal-delay="150">
                         <h3 class="text-xl font-bold text-slate-950">Key Engineering Deliverables</h3>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div class="p-4 rounded-xl border border-slate-200/90 bg-slate-50 space-y-1.5 hover:shadow-sm hover:border-brand-300 transition-all">
+                            <div class="p-4 rounded-md border border-slate-200/90 bg-slate-50 space-y-1.5 hover:shadow-sm hover:border-brand-300 transition-all">
                                 <div class="text-xs font-bold text-slate-900">Custom Architecture</div>
                                 <p class="text-xs text-slate-600">Tailored data schemas, optimized database queries, and modular components.</p>
                             </div>
-                            <div class="p-4 rounded-xl border border-slate-200/90 bg-slate-50 space-y-1.5 hover:shadow-sm hover:border-brand-300 transition-all">
+                            <div class="p-4 rounded-md border border-slate-200/90 bg-slate-50 space-y-1.5 hover:shadow-sm hover:border-brand-300 transition-all">
                                 <div class="text-xs font-bold text-slate-900">Automated Testing</div>
                                 <p class="text-xs text-slate-600">Feature and unit test suites ensuring stability and zero regressions.</p>
                             </div>
-                            <div class="p-4 rounded-xl border border-slate-200/90 bg-slate-50 space-y-1.5 hover:shadow-sm hover:border-brand-300 transition-all">
+                            <div class="p-4 rounded-md border border-slate-200/90 bg-slate-50 space-y-1.5 hover:shadow-sm hover:border-brand-300 transition-all">
                                 <div class="text-xs font-bold text-slate-900">High-Speed API</div>
                                 <p class="text-xs text-slate-600">Fast RESTful endpoints with rate limiting and secure JWT/Sanctum authentication.</p>
                             </div>
-                            <div class="p-4 rounded-xl border border-slate-200/90 bg-slate-50 space-y-1.5 hover:shadow-sm hover:border-brand-300 transition-all">
+                            <div class="p-4 rounded-md border border-slate-200/90 bg-slate-50 space-y-1.5 hover:shadow-sm hover:border-brand-300 transition-all">
                                 <div class="text-xs font-bold text-slate-900">Responsive Interfaces</div>
                                 <p class="text-xs text-slate-600">Sub-second load times with clean Tailwind CSS utility classes.</p>
                             </div>
@@ -119,7 +119,7 @@
                 <!-- Sidebar -->
                 <div class="space-y-8">
                     <!-- Tech Stack Box -->
-                    <div class="reveal-on-scroll p-6 rounded-2xl border border-slate-200/90 bg-slate-50 space-y-4 hover:shadow-md transition-shadow" data-reveal-delay="100">
+                    <div class="reveal-on-scroll p-6 rounded-md border border-slate-200/90 bg-slate-50 space-y-4 hover:shadow-md transition-shadow" data-reveal-delay="100">
                         <h3 class="text-sm font-bold uppercase tracking-wider text-slate-900">Technologies Used</h3>
                         @if (!empty($project->technologies))
                             <div class="flex flex-wrap gap-2">
@@ -135,8 +135,8 @@
                     </div>
 
                     <!-- Inquire About Similar Project Card -->
-                    <div class="reveal-on-scroll p-6 rounded-2xl border border-brand-200 bg-brand-50/50 space-y-4 hover:shadow-md transition-shadow" data-reveal-delay="200">
-                        <div class="w-10 h-10 rounded-xl bg-brand-500 text-white flex items-center justify-center font-bold shadow-sm shadow-brand-500/25">
+                    <div class="reveal-on-scroll p-6 rounded-md border border-brand-200 bg-brand-50/50 space-y-4 hover:shadow-md transition-shadow" data-reveal-delay="200">
+                        <div class="w-10 h-10 rounded-md bg-brand-500 text-white flex items-center justify-center font-bold shadow-sm shadow-brand-500/25">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
                         </div>
                         <h3 class="text-base font-bold text-slate-900">Need a Similar Solution?</h3>

@@ -20,7 +20,7 @@
     <div class="w-full max-w-md relative z-10 space-y-6">
         <!-- Logo & Header -->
         <div class="text-center space-y-2">
-            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-500 to-amber-500 text-white font-extrabold text-2xl shadow-lg shadow-brand-500/30">
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-md bg-gradient-to-br from-brand-500 to-amber-500 text-white font-extrabold text-2xl shadow-lg shadow-brand-500/30">
                 V
             </div>
             <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
@@ -32,15 +32,15 @@
         </div>
 
         <!-- Login Card -->
-        <div class="rounded-3xl border border-slate-800 bg-slate-900/90 backdrop-blur-xl p-7 sm:p-8 shadow-2xl space-y-5">
+        <div class="rounded-md border border-slate-800 bg-slate-900/90 backdrop-blur-xl p-7 sm:p-8 shadow-2xl space-y-5">
             @if (session('status'))
-                <div class="p-3.5 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-300 text-xs font-medium">
+                <div class="p-3.5 rounded-md bg-blue-500/10 border border-blue-500/30 text-blue-300 text-xs font-medium">
                     {{ session('status') }}
                 </div>
             @endif
 
             @if ($errors->any())
-                <div class="p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-medium">
+                <div class="p-3.5 rounded-md bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-medium">
                     {{ $errors->first() }}
                 </div>
             @endif
@@ -59,7 +59,7 @@
                         value="{{ old('email', 'admin@vipdigitalhub.com') }}" 
                         required 
                         autofocus
-                        class="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-950 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all shadow-xs"
+                        class="w-full px-4 py-3 rounded-md border border-slate-700 bg-slate-950 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all shadow-xs"
                         placeholder="admin@vipdigitalhub.com"
                     >
                 </div>
@@ -74,7 +74,7 @@
                         id="password" 
                         value="password"
                         required 
-                        class="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-950 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all shadow-xs"
+                        class="w-full px-4 py-3 rounded-md border border-slate-700 bg-slate-950 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all shadow-xs"
                         placeholder="••••••••"
                     >
                 </div>
@@ -88,7 +88,7 @@
 
                 <button 
                     type="submit" 
-                    class="cta-shimmer w-full mt-2 inline-flex items-center justify-center px-5 py-3.5 rounded-xl font-semibold text-sm text-white bg-brand-500 hover:bg-brand-600 active:scale-[0.98] shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 transition-all"
+                    class="cta-shimmer w-full mt-2 inline-flex items-center justify-center px-5 py-3.5 rounded-md font-semibold text-sm text-white bg-brand-500 hover:bg-brand-600 active:scale-[0.98] shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 transition-all"
                 >
                     <span>Sign In to Admin Panel</span>
                     <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>

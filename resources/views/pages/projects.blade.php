@@ -28,14 +28,14 @@
             <div class="animate-fade-in-up delay-300 flex flex-wrap items-center justify-center gap-2 mb-12">
                 <a 
                     href="{{ route('projects') }}" 
-                    class="px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 active:scale-95 {{ empty($selectedCategory) ? 'bg-brand-500 text-white shadow-sm shadow-brand-500/25' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100' }}"
+                    class="px-4 py-2 rounded-md text-xs font-semibold transition-all duration-200 active:scale-95 {{ empty($selectedCategory) ? 'bg-brand-500 text-white shadow-sm shadow-brand-500/25' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100' }}"
                 >
                     All Work ({{ $projects->total() }})
                 </a>
                 @foreach ($categories as $category)
                     <a 
                         href="{{ route('projects', ['category' => $category]) }}" 
-                        class="px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 active:scale-95 {{ $selectedCategory === $category ? 'bg-brand-500 text-white shadow-sm shadow-brand-500/25' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100' }}"
+                        class="px-4 py-2 rounded-md text-xs font-semibold transition-all duration-200 active:scale-95 {{ $selectedCategory === $category ? 'bg-brand-500 text-white shadow-sm shadow-brand-500/25' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100' }}"
                     >
                         {{ $category }}
                     </a>
@@ -57,7 +57,7 @@
                     {{ $projects->links() }}
                 </div>
             @else
-                <div class="reveal-on-scroll text-center py-16 p-8 rounded-2xl border border-dashed border-slate-300 bg-white">
+                <div class="reveal-on-scroll text-center py-16 p-8 rounded-md border border-dashed border-slate-300 bg-white">
                     <p class="text-slate-500 text-sm">No projects found for the selected category.</p>
                     <div class="mt-4">
                         <x-ui.button variant="outline" :href="route('projects')">
