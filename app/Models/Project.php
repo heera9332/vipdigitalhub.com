@@ -4,74 +4,30 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\PostType;
 use Database\Factories\ProjectFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class Project extends Post
 {
     /** @use HasFactory<ProjectFactory> */
     use HasFactory;
 
-    protected $fillable = [
-        'title',
-        'slug',
-        'short_description',
-        'description',
-        'featured_image',
-        'gallery',
-        'technologies',
-        'category',
-        'project_url',
-        'client',
-        'year',
-        'featured',
-        'status',
-        'sort_order',
-        'published_at',
+    protected $table = 'posts';
+
+    protected $attributes = [
+        'post_type' => 'project',
     ];
 
-    /**
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    protected static function booted(): void
     {
-        return [
-            'gallery' => 'array',
-            'technologies' => 'array',
-            'featured' => 'boolean',
-            'published_at' => 'datetime',
-            'sort_order' => 'integer',
-        ];
-    }
+        static::addGlobalScope('project_type', function (Builder $builder): void {
+            $builder->where('post_type', PostType::Project->value);
+        });
 
-    public function getRouteKeyName(): string
-    {
-        return 'slug';
-    }
-
-    /**
-     * Scope to published projects.
-     *
-     * @param  Builder<Project>  $query
-     * @return Builder<Project>
-     */
-    public function scopePublished(Builder $query): Builder
-    {
-        return $query->where('status', 'published')
-            ->whereNotNull('published_at')
-            ->where('published_at', '<=', now());
-    }
-
-    /**
-     * Scope to featured projects.
-     *
-     * @param  Builder<Project>  $query
-     * @return Builder<Project>
-     */
-    public function scopeFeatured(Builder $query): Builder
-    {
-        return $query->where('featured', true);
+        static::creating(function (Project $project): void {
+            $project->post_type = PostType::Project->value;
+        });
     }
 }

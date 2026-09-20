@@ -23,7 +23,7 @@ class ProjectRequest extends FormRequest
 
         return [
             'title' => ['required', 'string', 'max:255'],
-            'slug' => ['nullable', 'string', 'max:255', Rule::unique('projects', 'slug')->ignore($projectId)],
+            'slug' => ['nullable', 'string', 'max:255', Rule::unique('posts', 'slug')->ignore($projectId)],
             'category' => ['required', 'string', 'max:100'],
             'client' => ['nullable', 'string', 'max:150'],
             'year' => ['nullable', 'string', 'max:10'],

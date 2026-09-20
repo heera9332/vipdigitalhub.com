@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             SiteSettingSeeder::class,
             ProjectSeeder::class,
+            ServiceSeeder::class,
             PostSeeder::class,
         ]);
     }

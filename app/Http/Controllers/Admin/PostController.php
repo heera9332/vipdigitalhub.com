@@ -37,6 +37,10 @@ class PostController extends Controller
             $query->where('category', $category);
         }
 
+        if ($postType = $request->input('post_type')) {
+            $query->where('post_type', $postType);
+        }
+
         $posts = $query->latest('updated_at')->paginate(15)->withQueryString();
         $categories = Post::distinct()->pluck('category')->filter()->values();
 
@@ -87,6 +91,8 @@ class PostController extends Controller
         if ($validated['status'] === 'published' && empty($validated['published_at'])) {
             $validated['published_at'] = now();
         }
+
+        $validated['post_type'] = $validated['post_type'] ?? 'post';
 
         Post::create($validated);
 

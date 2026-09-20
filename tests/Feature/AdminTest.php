@@ -167,7 +167,8 @@ class AdminTest extends TestCase
         ]);
 
         $createResponse->assertRedirect(route('admin.projects.index'));
-        $this->assertDatabaseHas('projects', [
+        $this->assertDatabaseHas('posts', [
+            'post_type' => 'project',
             'slug' => 'global-logistics-automation-platform',
             'client' => 'FreightCorp',
             'featured' => true,
@@ -181,7 +182,7 @@ class AdminTest extends TestCase
         // Delete project
         $deleteResponse = $this->actingAs($this->adminUser)->delete(route('admin.projects.destroy', $project));
         $deleteResponse->assertRedirect(route('admin.projects.index'));
-        $this->assertDatabaseMissing('projects', ['id' => $project->id]);
+        $this->assertDatabaseMissing('posts', ['id' => $project->id]);
     }
 
     public function test_admin_can_review_and_update_inquiry_status(): void

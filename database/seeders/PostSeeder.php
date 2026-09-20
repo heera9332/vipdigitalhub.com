@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use App\Enums\PostType;
 use App\Models\Post;
 use Illuminate\Database\Seeder;
 
@@ -119,10 +120,16 @@ Enterprise customers expect granular access control—differentiating Owners, Ad
         ];
 
         foreach ($posts as $data) {
+            $data['post_type'] = PostType::Post->value;
             Post::updateOrCreate(
                 ['slug' => $data['slug']],
                 $data
             );
         }
+
+        $this->call([
+            ProjectSeeder::class,
+            ServiceSeeder::class,
+        ]);
     }
 }

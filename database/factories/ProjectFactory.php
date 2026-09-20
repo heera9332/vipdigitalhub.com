@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
+use App\Enums\PostType;
 use App\Models\Project;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -25,6 +26,7 @@ class ProjectFactory extends Factory
         $title = fake()->sentence(4);
 
         return [
+            'post_type' => PostType::Project->value,
             'title' => $title,
             'slug' => Str::slug($title).'-'.fake()->unique()->numberBetween(100, 999),
             'short_description' => fake()->paragraph(1),

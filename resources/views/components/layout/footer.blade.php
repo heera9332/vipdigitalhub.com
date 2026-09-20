@@ -5,7 +5,8 @@
     $email = setting('site_email', config('agency.email', 'vipdigitalhub@gmail.com'));
     $address = setting('site_address', config('agency.address', 'Bhopal, Madhya Pradesh'));
     $hours = setting('business_hours', config('agency.business_hours', 'Mon - Sat: 9:00 AM - 7:00 PM'));
-    $services = array_slice(config('services.offerings', []), 0, 6, true);
+    $dynamicServices = \App\Models\Post::services()->published()->orderBy('sort_order')->take(6)->get();
+    $services = $dynamicServices->isNotEmpty() ? $dynamicServices : array_slice(config('services.offerings', []), 0, 6, true);
     $quickLinks = config('navigation.footer.quick_links', []);
     $socialLinks = config('social.links', []);
 @endphp

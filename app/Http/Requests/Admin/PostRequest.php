@@ -22,6 +22,7 @@ class PostRequest extends FormRequest
         $postId = $this->route('post')?->id;
 
         return [
+            'post_type' => ['nullable', 'string', Rule::in(['post', 'project', 'service'])],
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['nullable', 'string', 'max:255', Rule::unique('posts', 'slug')->ignore($postId)],
             'category' => ['required', 'string', 'max:100'],

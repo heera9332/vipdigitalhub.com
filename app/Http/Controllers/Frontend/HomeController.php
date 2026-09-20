@@ -29,12 +29,21 @@ class HomeController extends Controller
                 ->get();
         }
 
-        $latestPosts = Post::published()
+        $latestPosts = Post::posts()
+            ->published()
             ->latest('published_at')
             ->take(3)
             ->get();
 
-        $services = array_slice(config('services.offerings', []), 0, 6, true);
+        $services = Post::services()
+            ->published()
+            ->orderBy('sort_order')
+            ->take(6)
+            ->get();
+
+        if ($services->isEmpty()) {
+            $services = array_slice(config('services.offerings', []), 0, 6, true);
+        }
 
         return view('pages.home', [
             'featuredProjects' => $featuredProjects,

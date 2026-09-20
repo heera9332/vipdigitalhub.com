@@ -19,13 +19,15 @@ class PostController extends Controller
         $selectedCategory = $request->query('category');
         $search = $request->query('q');
 
-        $categories = Post::published()
+        $categories = Post::posts()
+            ->published()
             ->distinct()
             ->pluck('category')
             ->filter()
             ->values();
 
-        $posts = Post::published()
+        $posts = Post::posts()
+            ->published()
             ->when($selectedCategory, fn ($query) => $query->where('category', $selectedCategory))
             ->when($search, fn ($query) => $query->where(function ($q) use ($search) {
                 $q->where('title', 'like', "%{$search}%")
@@ -49,16 +51,18 @@ class PostController extends Controller
      */
     public function show(Post $post): View
     {
-        abort_unless($post->status === 'published' && $post->published_at?->isPast(), 404);
+        abort_unless($post->isPost() && $post->status === 'published' && $post->published_at?->isPast(), 404);
 
-        $relatedPosts = Post::published()
+        $relatedPosts = Post::posts()
+            ->published()
             ->where('id', '!=', $post->id)
             ->where('category', $post->category)
             ->take(3)
             ->get();
 
         if ($relatedPosts->isEmpty()) {
-            $relatedPosts = Post::published()
+            $relatedPosts = Post::posts()
+                ->published()
                 ->where('id', '!=', $post->id)
                 ->take(3)
                 ->get();

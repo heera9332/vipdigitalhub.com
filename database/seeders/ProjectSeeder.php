@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use App\Enums\PostType;
 use App\Models\Project;
 use Illuminate\Database\Seeder;
 
@@ -114,6 +115,7 @@ class ProjectSeeder extends Seeder
         ];
 
         foreach ($projects as $data) {
+            $data['post_type'] = PostType::Project->value;
             Project::updateOrCreate(
                 ['slug' => $data['slug']],
                 $data

@@ -88,7 +88,7 @@
                 </div>
 
                 <!-- Technologies & External Links -->
-                <div class="bg-white p-6 sm:p-8 rounded-md border border-slate-200/90 shadow-xs space-y-4">
+                <div class="bg-white p-4 rounded-md border border-slate-200/90 shadow-xs space-y-4">
                     <h3 class="text-sm font-bold text-slate-950">Tech Stack & External Links</h3>
 
                     <div>

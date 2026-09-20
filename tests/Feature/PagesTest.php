@@ -81,7 +81,7 @@ class PagesTest extends TestCase
 
     public function test_post_detail_page_is_accessible(): void
     {
-        $post = Post::published()->first();
+        $post = Post::posts()->published()->first();
         $this->assertNotNull($post);
 
         $response = $this->get(route('posts.show', $post));

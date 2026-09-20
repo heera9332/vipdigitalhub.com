@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactRequest;
 use App\Models\FormEntry;
+use App\Models\Post;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -18,7 +19,15 @@ class ContactController extends Controller
      */
     public function index(Request $request): View
     {
-        $services = config('services.offerings', []);
+        $services = Post::services()
+            ->published()
+            ->orderBy('sort_order')
+            ->get();
+
+        if ($services->isEmpty()) {
+            $services = config('services.offerings', []);
+        }
+
         $selectedService = $request->query('service');
 
         return view('pages.contact', [
